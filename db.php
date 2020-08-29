@@ -28,6 +28,9 @@ if(is_ajax()){
             case "add_passenger":
                 addPassengerInformation($conn);
                 break;
+            case "payment_form_submission":
+                addPaymentInformation($conn);
+                break;
         }
     }
 }
@@ -207,6 +210,28 @@ function addPassengerInformation($conn){
             'message' => 'Added successfully'
         );
         
+        echo json_encode($response);
+    } else{
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+function addPaymentInformation($conn){
+    $search_id      = $_SESSION["ticket_search_insert_id"];
+    $payment_amount = '1,689.00';
+    $payment_option = $_POST['payment_option'];
+    $created_at     = (new DateTime())->format('Y-m-d H:i:s');
+    
+    $sql = "INSERT INTO web_ticket_demo.payments (search_id, payment_amount, payment_option, transaction_id,
+                                      createdAt, updatedAt)
+            VALUES ($search_id, '$payment_amount', '$payment_option', null, '$created_at', null)";
+    
+    if($conn->query($sql) === true){
+        $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 3 WHERE id = '$search_id'");
+        $response = array(
+            'success' => true,
+            'message' => 'Added successfully'
+        );
         echo json_encode($response);
     } else{
         echo "Error: " . $sql . "<br>" . $conn->error;
