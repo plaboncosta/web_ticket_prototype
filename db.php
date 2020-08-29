@@ -31,6 +31,9 @@ if(is_ajax()){
             case "payment_form_submission":
                 addPaymentInformation($conn);
                 break;
+            case "passenger_file_upload":
+                savePassengerFile($conn);
+                break;
         }
     }
 }
@@ -235,6 +238,34 @@ function addPaymentInformation($conn){
         echo json_encode($response);
     } else{
         echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+function savePassengerFile($conn){
+    if( !empty($_FILES['image_url'])){
+        $path = "assets/uploads/";
+        $path = $path . basename($_FILES['image_url']['name']);
+        $id   = $_POST['id'];
+        
+        if( !file_exists('./assets/uploads/')){
+            mkdir("./assets/uploads", 0777);
+        }
+        
+        if(move_uploaded_file($_FILES['image_url']['tmp_name'], $path)){
+            $conn->query("UPDATE web_ticket_demo.passengers SET image_url = '$path' WHERE id = '$id'");
+            $response = array(
+                'success' => true,
+                'message' => 'File Uploaded',
+                'path'    => $path
+            );
+            echo json_encode($response);
+        } else{
+            $response = array(
+                'success' => false,
+                'message' => 'Something went wrong!'
+            );
+            echo json_encode($response);
+        }
     }
 }
 

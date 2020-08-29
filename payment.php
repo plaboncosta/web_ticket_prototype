@@ -72,27 +72,57 @@ if($result_two->num_rows > 0){
                             <div class="col-md-8">
                                 <div class="d-flex justify-content-between">
                                     <div class="w-50 d-flex">
-                                        <div class="ui-avatar"><i class="icofont-user-alt-2"></i></div>
-                                        <div>
+                                        <form id="passengerFileUploadForm_<?php echo !empty($item['id']) ?
+                                            $item['id'] :
+                                            '' ?>">
+                                            <input type="hidden" name="id"
+                                                   value="<?php echo !empty($item['id']) ? $item['id'] :
+                                                       '' ?>">
+                                            <input type="hidden" name="action" value="passenger_file_upload">
+                                            <div id="profile_image_<?php echo !empty($item['id']) ?
+                                                $item['id'] :
+                                                '' ?>">
+                                                <?php if( !empty($item['image_url'])){ ?>
+                                                    <img src="<?php echo $base_url . '/' . $item['image_url'] ?>"
+                                                         class="profile-image" alt="">
+                                                <?php } else{ ?>
+                                                    <div class="ui-avatar ui-avatar-upload-container">
+                                                        <i class="icofont-user-alt-2" width="100%"></i>
+                                                        <div class="middle">
+                                                            <div class="text">
+                                                                <input type="file" name="image_url"
+                                                                       id="fileUpload"
+                                                                       onchange="uploadPassengerFile('<?php echo !empty($item['id']) ?
+                                                                           $item['id'] :
+                                                                           '' ?>')">
+                                                                <label for="fileUpload"><i
+                                                                            class="icofont-camera"></i></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        </form>
+                                        <div class="ml-2">
                                             <h4 class="mb-3"><b><?php echo !empty($item['name']) ?
                                                         $item['name'] : '' ?></b></h4>
                                             <p><span><?php echo !empty($item['age']) ? $item['age'] : '' ?> years old | <?php echo !empty($item['gender']) ?
                                                         $item['gender'] : '' ?></span></p>
                                         </div>
                                     </div>
-                                    <div class="w-50">
+                                    <div class="w-50 ml-3">
                                         <p><span>Class</span></p>
-                                        <h4><b>AC Berth Class</b></h4>
+                                        <h5><b>AC Berth Class</b></h5>
                                     </div>
                                     <div class="w-50">
                                         <p><span>Date of Journey</span></p>
-                                        <h4><b><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                        <h5><b><?php echo !empty($ticket_search['date']) ? date("M j, Y",
                                                                                                 strtotime($ticket_search['date'])) :
-                                                    '' ?></b></h4>
+                                                    '' ?></b></h5>
                                     </div>
                                     <div class="w-50">
                                         <p><span>Fare</span></p>
-                                        <h4><b>BDT 1,689.00</b></h4>
+                                        <h5><b>BDT 1,689.00</b></h5>
                                     </div>
                                 </div>
                             </div>
@@ -644,12 +674,12 @@ if($result_two->num_rows > 0){
             data  : $("#bKashForm").serialize(),
         }).done(function (response){
             let result = JSON.parse(response);
-             if (result.success){
-             $("#bkash-pin-modal").modal('hide');
-             $("#ticket-confirmation").modal('show');
-             } else{
-             alert('Something went wrong');
-             }
+            if (result.success){
+                $("#bkash-pin-modal").modal('hide');
+                $("#ticket-confirmation").modal('show');
+            } else{
+                alert('Something went wrong');
+            }
         });
     }
     
@@ -682,6 +712,29 @@ if($result_two->num_rows > 0){
         $("#download-ticket").on("load", function (){
             $(this).contents().find('img').css({width: '100%', height: '100%', objectFit: 'cover'});
             
+        });
+    }
+    
+    function uploadPassengerFile(id){
+        let form = $('#passengerFileUploadForm_' + id)[0];
+        $.ajax({
+            type       : 'POST',
+            enctype    : 'multipart/form-data',
+            url        : base + '/db.php',
+            data       : new FormData(form),
+            processData: false,
+            contentType: false,
+            cache      : false,
+            success    : function (response){
+                let result = JSON.parse(response);
+                if (result.success){
+                    $("#profile_image_" + id).empty();
+                    let img = '<img src="' + base + '/' + result.path + '" class="profile-image" alt="">';
+                    $("#profile_image_" + id).append(img);
+                } else{
+                    alert('Something went wrong!');
+                }
+            }
         });
     }
 </script>
