@@ -155,7 +155,7 @@ function loginUser($conn){
     } else{
         $response = array(
             'success' => false,
-            'message' => 'Email or Password is incorrect!'
+            'message' => 'Phone Number or Password is incorrect!'
         );
         echo json_encode($response);
     }
