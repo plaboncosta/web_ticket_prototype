@@ -279,14 +279,3 @@
     font-size: 16px;
     padding: 16px 32px;
     }
-
-.profile-image {
-    width: 75px !important;
-    height: 75px;
-    display: flex;
-    margin-right: 5%;
-    border-radius: 50%;
-    align-items: center;
-    border: 1px solid #444;
-    justify-content: center;
-    }
