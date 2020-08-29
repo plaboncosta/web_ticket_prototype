@@ -1,8 +1,29 @@
 <?php
 include 'config.php';
 session_start();
-?>
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$id            = $_SESSION['ticket_search_insert_id'];
+$sql           = "select * from ticket_search where id = '$id';";
+$result        = $conn->query($sql);
+$ticket_search = '';
+
+if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+        $ticket_search = $row;
+    }
+}
+
+$total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['passenger_no'] : 0) +
+                   (!empty($ticket_search['child_no']) ? $ticket_search['child_no'] : 0);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,20 +65,26 @@ session_start();
                     </div>
                     <div class="ui-details-train-name">
                         <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text">DHAKA to</p>
-                        <p class="mb-0 text-secondary gray-text">Dinajpur</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
                     </div>
                     <div>
 
                         <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success">DHAKA </b></p>
-                        <p class="mb-0"><b class="text-success">Thursday 13 March</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                                                                   strtotime($ticket_search['date'])) :
+                        '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success">Dinajpur</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -137,20 +164,26 @@ session_start();
                     </div>
                     <div>
                         <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text">DHAKA to</p>
-                        <p class="mb-0 text-secondary gray-text">Dinajpur</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
                     </div>
                     <div>
 
                         <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success">DHAKA </b></p>
-                        <p class="mb-0"><b class="text-success">Thursday 13 March</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                                                                   strtotime($ticket_search['date'])) :
+                        '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success">Dinajpur</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -230,20 +263,26 @@ session_start();
                     </div>
                     <div>
                         <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text">DHAKA to</p>
-                        <p class="mb-0 text-secondary gray-text">Dinajpur</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
                     </div>
                     <div>
 
                         <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success">DHAKA </b></p>
-                        <p class="mb-0"><b class="text-success">Thursday 13 March</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                                                                   strtotime($ticket_search['date'])) :
+                        '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success">Dinajpur</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -323,20 +362,26 @@ session_start();
                     </div>
                     <div>
                         <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text">DHAKA to</p>
-                        <p class="mb-0 text-secondary gray-text">Dinajpur</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
+                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
                     </div>
                     <div>
 
                         <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success">DHAKA </b></p>
-                        <p class="mb-0"><b class="text-success">Thursday 13 March</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                                                                   strtotime($ticket_search['date'])) :
+                        '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success">Dinajpur</b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
+                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -408,7 +453,8 @@ session_start();
                     <div class="input-group mb-2">
                         <input class="form-control" type="text" placeholder="Train Name">
                         <div class="input-group-append">
-                            <span class="input-group-text text-danger"><h5 class="m-0"><i class="icofont-train-line"></i>   </h5></span>
+                            <span class="input-group-text text-danger"><h5 class="m-0"><i
+                                            class="icofont-train-line"></i>   </h5></span>
                         </div>
                     </div>
                     <p class="text-danger">by Train Name</p>
@@ -425,7 +471,8 @@ session_start();
                     <div class="input-group mb-2">
                         <input class="form-control" type="text" placeholder="Time">
                         <div class="input-group-append">
-                            <span class="input-group-text text-danger"><h5 class="m-0"><i class="icofont-apple-watch"></i></h5></span>
+                            <span class="input-group-text text-danger"><h5 class="m-0"><i
+                                            class="icofont-apple-watch"></i></h5></span>
                         </div>
                     </div>
                     <p class="text-danger">by Time of Journey</p>
@@ -447,7 +494,7 @@ session_start();
 <script src="./assets/js/trainDetails.js"></script>
 <script>
     let base = "<?php echo $base_url; ?>";
-
+    
     function addSearchedTicketInfo(){
         $.ajax({
             url   : base + '/db.php',

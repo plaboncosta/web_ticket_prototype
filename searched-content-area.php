@@ -8,7 +8,7 @@
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Dashboard</a>
+                        <a class="nav-link" href="profile.php">My Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Verify Ticket</a>
@@ -38,7 +38,7 @@
                             Hey Hasan
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="profile.php">Dashboard</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                         </div>
                     </li>
                     <li class="nav-item">
