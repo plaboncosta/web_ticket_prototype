@@ -25,6 +25,9 @@ if(is_ajax()){
             case "login":
                 loginUser($conn);
                 break;
+            case "add_passenger":
+                addPassengerInformation($conn);
+                break;
         }
     }
 }
@@ -166,6 +169,47 @@ function loginUser($conn){
             'message' => 'Phone Number or Password is incorrect!'
         );
         echo json_encode($response);
+    }
+}
+
+function addPassengerInformation($conn){
+    $passenger_name = $_POST['passenger_name'];
+    $gender         = $_POST['gender'];
+    $age            = $_POST['age'];
+    $is_infant      = explode(',', $_POST['hidden_infant']);
+    $nationality    = 'Bangladeshi';
+    $search_id      = $_SESSION["ticket_search_insert_id"];
+    $created_at     = (new DateTime())->format('Y-m-d H:i:s');
+    
+    $sql       = "INSERT INTO `passengers` (`search_id`, `name`, `age`, `nationality`, `gender`,
+                `is_infant`, `createdAt`, `updatedAt`) VALUES ";
+    $value_str = "";
+    
+    if(count($passenger_name) > 0){
+        foreach($passenger_name as $key => $item){
+            $str =
+                "('$search_id', '$item', '$age[$key]', '$nationality', '$gender[$key]', '$is_infant[$key]', '$created_at', null)";
+            if($key < count($passenger_name)){
+                $str = $str . ',';
+            }
+            $value_str .= $str;
+        }
+    }
+    
+    $value_str = trim($value_str, ',');
+    $sql       .= $value_str;
+    
+    if($conn->query($sql) === true){
+        $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 2 WHERE id = '$search_id'");
+        
+        $response = array(
+            'success' => true,
+            'message' => 'Added successfully'
+        );
+        
+        echo json_encode($response);
+    } else{
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 

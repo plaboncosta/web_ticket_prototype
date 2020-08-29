@@ -414,6 +414,7 @@ session_start();
 <!-- Js Link -->
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/custom.script.js"></script>
 <script src="./assets/js/trainDetails.js"></script>
 <script>
     let base = "<?php echo $base_url; ?>";

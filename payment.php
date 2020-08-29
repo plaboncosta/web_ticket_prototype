@@ -1,3 +1,43 @@
+<?php
+include 'config.php';
+session_start();
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$id = $_SESSION['ticket_search_insert_id'];
+
+/* Fetch Search Ticket Data */
+$sql           = "select * from ticket_search where id = '$id';";
+$result        = $conn->query($sql);
+$ticket_search = '';
+
+if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+        $ticket_search = $row;
+    }
+}
+
+$total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['passenger_no'] : 0) +
+                   (!empty($ticket_search['child_no']) ? $ticket_search['child_no'] : 0);
+
+/* Fetch Passenger Data */
+$sql_two        = "select * from passengers where search_id = '$id'";
+$result_two     = $conn->query($sql_two);
+$passenger_info = array();
+
+if($result_two->num_rows > 0){
+    while($row = $result_two->fetch_assoc()){
+        array_push($passenger_info, $row);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,34 +56,71 @@
 <!-- Wrapper Defined -->
 <div id="wrapper">
 
-    <div class="row mx-0 px-0 mb-5">
+    <div class="row mx-0 px-0 mb-5 ui-payment-container">
         <div class="col-md-12 pt-4">
             <!--  Train info  -->
-            <div class="train-info">
-                <img src="./assets/images/payment-page-train-info.png" alt="">
-            </div>
+            <?php include 'train-info.php'; ?>
         </div>
-
         <div class="col-md-12 pt-4">
             <!--  Passenger info  -->
-            <div class="passenger-info">
-                <img src="./assets/images/payment-page-passenger-details.png" alt="">
+            <!--  Train info  -->
+            <div class="train-info bg-white shadowCustom">
+                <h4 class="ui-header mb-5"><b>Passenger Details</b></h4>
+                <div>
+                    <?php foreach($passenger_info as $key => $item){ ?>
+                        <div class="d-flex align-items-center <?php echo $key == 0 ? 'mb-5' : '' ?>">
+                            <div class="col-md-8">
+                                <div class="d-flex justify-content-between">
+                                    <div class="w-50 d-flex">
+                                        <div class="ui-avatar"><i class="icofont-user-alt-2"></i></div>
+                                        <div>
+                                            <h4 class="mb-3"><b><?php echo !empty($item['name']) ?
+                                                        $item['name'] : '' ?></b></h4>
+                                            <p><span><?php echo !empty($item['age']) ? $item['age'] : '' ?> years old | <?php echo !empty($item['gender']) ?
+                                                        $item['gender'] : '' ?></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="w-50">
+                                        <p><span>Class</span></p>
+                                        <h4><b>AC Berth Class</b></h4>
+                                    </div>
+                                    <div class="w-50">
+                                        <p><span>Date of Journey</span></p>
+                                        <h4><b><?php echo !empty($ticket_search['date']) ? date("M j, Y",
+                                                                                                strtotime($ticket_search['date'])) :
+                                                    '' ?></b></h4>
+                                    </div>
+                                    <div class="w-50">
+                                        <p><span>Fare</span></p>
+                                        <h4><b>BDT 1,689.00</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div><h4 class="mb-3"><b>Availability Status: </b><b class="text-success">Available
+                                            0002</b></h4></div>
+                                <div class="bg-pink"><p>Please cary your ID card while traveling</p></div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
         <div class="col-md-12 pt-4">
             <!--  Bank info  -->
-            <div class="bank-info">
+            <div class="bank-info shadowCustom">
                 <div class="bank-info-header d-flex justify-content-between">
-                    <h5>Choose your payment option</h5>
+                    <h4 class="ui-header"><b>Choose your payment option</b></h4>
                     <div class="bank-info-header-right">
-                        <h5 class="mb-0">Amount to be paid: <span>BDT 2980.00</span></h5>
-                        <span class="d-block text-right">inclusive of all TAX</span>
+                        <h4 class="mb-0"><b>Amount to be paid:</b> <span
+                                    class="font-weight-bold text-danger ml-3">BDT 2980.00</span></h4>
+                        <span class="d-block text-right font-weight-bold mt-2">inclusive of all TAX</span>
                     </div>
                 </div>
                 <div class="bank-info-body">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs py-3">
                         <li class="active"><a class="active" data-toggle="tab" href="#card">Credit/Debit
-                            Card</a></li>
+                                Card</a></li>
                         <li><a data-toggle="tab" href="#mfs">MFS</a></li>
                         <li><a data-toggle="tab" href="#wallet">Wallet</a></li>
                     </ul>
@@ -119,8 +196,7 @@
                         <div class="col-md-8">
                             <span class="safe-secure-payments">Safe and Secure Payments</span>
                             <span class="condition">In case of cancellation, the refund will be applicable as
-                                New Railway
-                            Refund Rules, Please read Terms and Conditions</span>
+                                    New Railway Refund Rules, Please read <span class="text-danger">Terms and Conditions</span></span>
                         </div>
                         <div class="col-md-4 d-flex justify-content-end">
                             <button onclick="confirmPaymentModalShow()"
@@ -508,7 +584,7 @@
     </div>
 
     <!--  Footer Area  -->
-    <?php include 'footer.php';?>
+    <?php include 'footer.php'; ?>
 
 </div>
 
@@ -528,36 +604,36 @@
             alert('Please select Visa or bKash Payment Gateway!');
         }
     }
-
+    
     function showBKashConfirmationModal(){
         $("#bkash-modal").modal('hide');
         $("#bkash-verification-modal").modal('show');
     }
-
+    
     function showBKashPinModal(){
         $("#bkash-verification-modal").modal('hide');
         $("#bkash-pin-modal").modal('show');
     }
-
+    
     function getConfirmationModal(){
         $("#bkash-pin-modal").modal('hide');
         $("#visa-card").modal('hide');
         $("#ticket-confirmation").modal('show');
     }
-
+    
     function printTicket(){
         $("#print-ticket-modal").modal('show');
         $("#print-ticket").on("load", function (){
             $(this).contents().find('img').css({width: '100%', height: '100%', objectFit: 'cover'});
-
+            
         });
     }
-
+    
     function downloadTicket(){
         $("#download-ticket-modal").modal('show');
         $("#download-ticket").on("load", function (){
             $(this).contents().find('img').css({width: '100%', height: '100%', objectFit: 'cover'});
-
+            
         });
     }
 </script>

@@ -21,7 +21,7 @@ if($result->num_rows > 0){
 }
 
 $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['passenger_no'] : 0) +
-                        (!empty($ticket_search['child_no']) ? $ticket_search['child_no'] : 0);
+                   (!empty($ticket_search['child_no']) ? $ticket_search['child_no'] : 0);
 
 ?>
 
@@ -47,45 +47,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
         <div class="row mx-0 px-0">
             <div class="col-md-12 pt-4">
                 <!--  Train info  -->
-                <div class="train-info bg-white">
-                    <h4 class="ui-header mb-5"><b>Train Info</b></h4>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <div class="mr-5">
-                                <h5 class="mb-0"><b>PANCHAGARH EXPRESS(793)</b></h5>
-                            </div>
-                            <div class="mr-1 ml-5">
-                                <b class="ui-top"><?php echo !empty($ticket_search['departure']) ? $ticket_search['departure'] : ''; ?></b>
-                                <p class="mb-0">12:10 AM</p>
-                            </div>
-                            <div class="mr-1 ml-3">
-                                <i class="icofont-rounded-right"></i>
-                            </div>
-                            <div class="mr-5 ml-3">
-                                <b class="ui-top"><?php echo !empty($ticket_search['arrival']) ? $ticket_search['arrival'] : ''; ?></b>
-                                <p class="mb-0">07:37 AM</p>
-                            </div>
-                            <div class="mr-5 ml-5">
-                                <b class="ui-top">Passenger <?php echo $total_passenger; ?></b>
-                                <p class="mb-0">General Quota</p>
-                            </div>
-                            <div class="mr-5 ml-5">
-                                <b class="ui-top">07h 27m</b>
-                                <p class="mb-0">10 Stops</p>
-                            </div>
-                            <div class="mr-5 ml-5">
-                                <b class="ui-top"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
-                                                                  strtotime($ticket_search['date'])) : '' ?></b>
-                                <p class="mb-0">Departure</p>
-                            </div>
-                        </div>
-                        <div>
-                            <button onclick="window.location.href = 'trainDetails.php'"
-                                    class="btn btn-outline-secondary">Change
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <?php include 'train-info.php'; ?>
             </div>
 
             <div class="col-md-12 pt-4">
@@ -301,59 +263,69 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     <div class="passenger-details-header d-flex justify-content-between">
                         <h5>Passenger Details</h5>
                     </div>
-                    <div class="passenger-details-body mt-3" id="passenger-details-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label class="d-block font-weight-bold" for="passenger_name">Name</label>
-                                <input type="text" name="passenger_name[]"
-                                       class="form-control banner-form-input"
-                                       id="passenger_name" placeholder="Passenger Name">
-                                <span class="banner-form-input-highlight-text">Name should match with your
+                    <form onsubmit="addPassengerInformation(); return false;" id="passengerInfoForm">
+                        <input type="hidden" name="action" value="add_passenger">
+                        <input type="hidden" name="hidden_infant" id="hidden_infant">
+                        <div class="passenger-details-body mt-3" id="passenger-details-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="d-block font-weight-bold" for="passenger_name">Name</label>
+                                    <input type="text" name="passenger_name[]"
+                                           class="form-control banner-form-input"
+                                           id="passenger_name" placeholder="Passenger Name" required>
+                                    <span class="banner-form-input-highlight-text">Name should match with your
                                 Travel Documents</span>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="d-block font-weight-bold" for="age">Age</label>
-                                <select name="age[]" class="form-control banner-form-input" id="age">
-                                    <option value="">Select Age</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="d-block font-weight-bold" for="gender">Gender</label>
-                                <select name="gender[]" class="form-control banner-form-input" id="gender">
-                                    <option value="">Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="d-block font-weight-bold" for="infant">&nbsp;</label>
-                                <input type="checkbox" name="infant[]" id="infant">
-                                <span class="d-inline-block pl-2"><strong>Infant</strong>
-                                <span>(Travelling with a child)</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2 d-flex">
-                            <a href="javascript:void(0);" onclick="addPassenger()"
-                               class="passenger-details-plus-button">
-                                <div class="passenger-details-plus-icon">
-                                    <i class="icofont-plus"></i>
                                 </div>
-                                <span class="add-passenger-text">Add Passenger</span>
-                            </a>
+                                <div class="col-md-2">
+                                    <label class="d-block font-weight-bold" for="age">Age</label>
+                                    <select name="age[]" class="form-control banner-form-input" id="age"
+                                            required>
+                                        <option value="">Select Age</option>
+                                        <?php for($i = 1; $i <= 80; $i ++){ ?>
+                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="d-block font-weight-bold" for="gender">Gender</label>
+                                    <select name="gender[]" class="form-control banner-form-input"
+                                            id="gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="d-block font-weight-bold">&nbsp;</label>
+                                    <input type="checkbox" name="infant[]" id="infant" class="infant_class">
+                                    <label for="infant"><span class="d-inline-block pl-2"><strong>Infant</strong></label>
+                                <span>(Travelling with a child)</span></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="passenger-details-footer">
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-end">
-                                <a href="payment.php"
-                                   class="go-to-payment btn btn-danger banner-form-input text-decoration-none font-weight-bold px-3">Go
-                                    to Payment
+                        <div class="row mt-3">
+                            <div class="col-md-2 d-flex">
+                                <a href="javascript:void(0);" onclick="addPassenger()"
+                                   class="passenger-details-plus-button">
+                                    <div class="passenger-details-plus-icon">
+                                        <i class="icofont-plus"></i>
+                                    </div>
+                                    <span class="add-passenger-text">Add Passenger</span>
                                 </a>
                             </div>
                         </div>
-                    </div>
+                        <div class="passenger-details-footer">
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-end">
+                                    <button type="submit"
+                                            class="go-to-payment btn btn-danger banner-form-input font-weight-bold px-3">
+                                        Go
+                                        to Payment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -366,64 +338,54 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 
 <!-- Js Link -->
 <script src="./assets/js/jquery.min.js"></script>
-<script src="./assets/js/jquery.slim.js"></script>
-<script src="./assets/js/popper.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/custom.script.js"></script>
 <script>
-    $(document).ready(function (){
-        for (let i = 1; i <= 80; i++){
-            $('#age').append($('<option>', {
-                value: i,
-                text : i
-            }));
-        }
-        
-    });
-
-    let valOne = document.getElementById('valOne');
-    let valTwo = document.getElementById('valTwo');
-    let togSit = document.getElementById('toggleSit');
-    let overLay = document.querySelector('.ui-train-subContainer');
-    let greenSit = document.querySelector('.bg-green');
-    let redSit = document.querySelector('.bg-red');
+    let base           = "<?php echo $base_url; ?>";
+    let valOne         = document.getElementById('valOne');
+    let valTwo         = document.getElementById('valTwo');
+    let togSit         = document.getElementById('toggleSit');
+    let overLay        = document.querySelector('.ui-train-subContainer');
+    let greenSit       = document.querySelector('.bg-green');
+    let redSit         = document.querySelector('.bg-red');
     let selectedSitOne = null;
     let selectedSitTwo = null;
-
+    
     togSit.addEventListener('click', () => {
         overLay.classList.toggle('ui-overlay');
-        if (togSit.style.background === "darkgreen") {
+        if (togSit.style.background === "darkgreen"){
             togSit.style.background = "white";
-            togSit.style.color = 'black';
-        } else {
+            togSit.style.color      = 'black';
+        } else{
             togSit.style.background = "darkgreen";
-            togSit.style.color = 'white';
+            togSit.style.color      = 'white';
         }
     });
-
+    
     greenSit.addEventListener('click', () => {
-        if (togSit.style.background === "darkgreen") {
-            if (greenSit.style.background === 'darkred') {
+        if (togSit.style.background === "darkgreen"){
+            if (greenSit.style.background === 'darkred'){
                 greenSit.style.background = '#34da90';
-                selectedSitOne = null;
-                valOne.innerHTML = null;
-            } else {
+                selectedSitOne            = null;
+                valOne.innerHTML          = null;
+            } else{
                 greenSit.style.background = 'darkred';
-                selectedSitOne = 'A1-01-L-31';
-                valOne.innerHTML = 'A1-01-L-31';
+                selectedSitOne            = 'A1-01-L-31';
+                valOne.innerHTML          = 'A1-01-L-31';
             }
         }
     });
-
+    
     redSit.addEventListener('click', () => {
-        if (togSit.style.background === "darkgreen") {
-            if (redSit.style.background === 'darkred') {
+        if (togSit.style.background === "darkgreen"){
+            if (redSit.style.background === 'darkred'){
                 redSit.style.background = '#fe838f';
-                selectedSitTwo = null;
-                valTwo.innerHTML = null;
-            } else {
+                selectedSitTwo          = null;
+                valTwo.innerHTML        = null;
+            } else{
                 redSit.style.background = 'darkred';
-                selectedSitTwo = 'A1-01-L-32';
-                valTwo.innerHTML = 'A1-01-L-32';
+                selectedSitTwo          = 'A1-01-L-32';
+                valTwo.innerHTML        = 'A1-01-L-32';
             }
         }
     });
@@ -437,37 +399,64 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
         } else{
             let html = `
             <div class="row">
-                        <div class="col-md-3">
-                            <label class="d-block font-weight-bold" for="passenger_name">Name</label>
-                            <input type="text" name="passenger_name[]" class="form-control banner-form-input"
-                                   id="passenger_name" placeholder="Passenger Name">
-                            <span class="banner-form-input-highlight-text">Name should match with your
+                                <div class="col-md-3">
+                                    <label class="d-block font-weight-bold" for="passenger_name">Name</label>
+                                    <input type="text" name="passenger_name[]"
+                                           class="form-control banner-form-input"
+                                           id="passenger_name" placeholder="Passenger Name">
+                                    <span class="banner-form-input-highlight-text">Name should match with your
                                 Travel Documents</span>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="d-block font-weight-bold" for="age">Age</label>
-                            <select name="age[]" class="form-control banner-form-input" id="age">
-                                <option value="">Select Age</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="d-block font-weight-bold" for="gender">Gender</label>
-                            <select name="gender[]" class="form-control banner-form-input" id="gender">
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="d-block font-weight-bold" for="infant">&nbsp;</label>
-                            <input type="checkbox" name="infant[]" id="infant">
-                            <span class="d-inline-block pl-2"><strong>Infant</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="d-block font-weight-bold" for="age">Age</label>
+                                    <select name="age[]" class="form-control banner-form-input" id="age">
+                                        <option value="">Select Age</option>
+                                        <?php for($i = 1; $i <= 80; $i ++){ ?>
+                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="d-block font-weight-bold" for="gender">Gender</label>
+                                    <select name="gender[]" class="form-control banner-form-input"
+                                            id="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="d-block font-weight-bold" for="infant">&nbsp;</label>
+                                    <input type="checkbox" name="infant[]" id="infant" class="infant_class">
+                                    <label for="infant"><span class="d-inline-block pl-2"><strong>Infant</strong></label>
                                 <span>(Travelling with a child)</span></span>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
         `;
             $("#passenger-details-body").append(html);
         }
+    }
+    
+    function addPassengerInformation(){
+        let infant_array = [];
+        $('input:checkbox.infant_class').each(function (){
+            infant_array.push(this.checked ? 1 : 0);
+        });
+        
+        $("#hidden_infant").val(infant_array);
+        
+        $.ajax({
+            url   : base + '/db.php',
+            method: 'POST',
+            data  : $("#passengerInfoForm").serialize(),
+        }).done(function (response){
+            let result = JSON.parse(response);
+             if (result.success){
+             window.location.href = 'payment.php';
+             } else{
+                alert('Something went wrong');
+             }
+        });
     }
 </script>
 </body>
