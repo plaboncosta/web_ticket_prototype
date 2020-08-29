@@ -1,0 +1,162 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    }
+
+@font-face {
+    font-family: IcoFont;
+    src: url('../fonts/icofont.woff');
+    }
+
+body {
+    background-color: #F4F5F9;
+    }
+
+.logo-image {
+    width: 90px;
+    height: 90px;
+    }
+
+.navbar {
+    background-color: transparent !important;
+    }
+
+.nav-item {
+    padding-left: 12px;
+    padding-right: 12px;
+    }
+
+.nav-item .nav-link {
+    font-size: 18px;
+    color: #fff !important;
+    font-weight: 600;
+    }
+
+.navbar-nav {
+    padding-right: 50px;
+    }
+
+.language-icon {
+    width: 20px;
+    height: 20px;
+    }
+
+.banner-area {
+    background-image: url('../images/banner.jpg');
+    height: 650px;
+    width: 100%;
+    background-position: 100% 100%;
+    background-size: cover;
+    }
+
+.banner-overlay {
+    height: 650px;
+    width: 100%;
+    background-color: #1C8467;
+    opacity: 0.8;
+    position: absolute;
+    z-index: 1;
+    }
+
+.banner-text {
+    color: #fff;
+    text-align: center;
+    }
+
+.banner-text h3 {
+    font-size: 55px;
+    }
+
+.ui-body {
+    z-index: 10;
+    }
+
+.banner-text p {
+    font-size: 28px;
+    }
+
+.banner-form {
+    width: 70%;
+    margin: 0 auto;
+    }
+
+.banner-form-header {
+    width: 60%;
+    background-color: red;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    }
+
+.banner-form-header h5 {
+    margin: 0px !important;
+    color: #fff;
+    padding: 8px 40px;
+    font-size: 24px;
+    }
+
+.banner-form-body {
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 30px 40px;
+    }
+
+.banner-form-input-highlight-text {
+    font-size: 13px;
+    }
+
+.banner-form-input {
+    border-radius: 20px !important;
+    }
+
+.home-page-body {
+    width: 100%;
+    height: auto;
+    }
+
+.home-page-body img {
+    width: 100%;
+    height: auto;
+    }
+
+.login-modal-header-area, .registration-modal-header-area {
+    background-color: #027E5B;
+    color: #fff;
+    border-bottom: 5px solid red;
+    }
+
+.login-modal-button, .registration-modal-button {
+    font-size: 18px;
+    }
+
+.login-modal-close-button, .registration-modal-close-button {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #2d762d;
+    border-radius: 35px;
+    position: relative;
+    text-align: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    cursor: pointer;
+    }
+
+.login-modal-close-button i, .registration-modal-close-button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    color: red;
+    }
+
+.modal-backdrop {
+    background-color: #000 !important;
+    opacity: 0.9 !important;
+    }
+
+.cursor-pointer {
+    cursor: pointer;
+    }

@@ -1,0 +1,176 @@
+.train-info, passenger-info, .footer-area {
+    width: 100%;
+    }
+
+.train-info img, .passenger-info img, .footer-area img {
+    width: 100%;
+    }
+
+.bank-info {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    }
+
+.bank-info-header > h5 {
+    color: #00008c;
+    font-size: 18px;
+    }
+
+.bank-info-header-right h5 {
+    font-size: 18px;
+    }
+
+.bank-info-header-right h5 span {
+    color: red;
+    }
+
+.bank-info-header-right > span {
+    font-size: 10px;
+    }
+
+.bank-info-body {
+    padding-right: 60px;
+    }
+
+.bank-info-body .tab-content {
+    margin-top: 35px;
+    }
+
+.bank-info-body ul li a {
+    color: #464343;
+    padding: 5px 25px;
+    }
+
+.bank-info-body ul li a.active {
+    background-color: #c7c7c7;
+    padding: 3px 25px;
+    font-weight: bold;
+    }
+
+.bank-info-body ul li a:hover {
+    text-decoration: none !important;
+    }
+
+.bank-info-footer {
+    margin-top: 10px;
+    }
+
+.bank-info-footer .safe-secure-payments {
+    display: block;
+    font-size: 12px;
+    color: #706868;
+    }
+
+.bank-info-footer .condition {
+    font-size: 14px;
+    }
+
+.bank-info-footer .confirm-payment {
+    padding: 8px 25px;
+    font-weight: 600;
+    }
+
+
+/* Visa Modal Image */
+.visa-modal-image-area img {
+    width: 150px;
+    }
+
+.visa-card-input {
+    border-radius: 8px;
+    background-color: #F0F0F0;
+    padding: 8px;
+    }
+
+.visa-card-button {
+    background-color: #dc3545 !important;
+    }
+
+.bkash-modal-content {
+    border: 1px solid #eee;
+    -webkit-box-shadow: -5px 6px 5px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -5px 6px 5px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: -5px 6px 5px -5px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    }
+
+.bkash-modal-header {
+    background-color: #fff;
+    }
+
+.bkash-modal-body {
+    background-color: #CB2155;
+    padding: 15px 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    }
+
+.bkash-checkout-text {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    }
+
+.merchant-details {
+    background-color: #fff;
+    padding: 8px 40px;
+    border-radius: 5px;
+    }
+
+.merchant-details p {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 17px;
+    }
+
+.bkash-account-number-text {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+    }
+
+.bkash-terms-conditions {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    }
+
+.bkash-terms-conditions-area {
+    padding: 10px 0px;
+    text-align: center;
+    }
+
+.bkash-modal-button {
+    font-weight: 600;
+    }
+
+
+/* Ticket Confirmation */
+.ticket-confirmation-body {
+    padding: 8px 50px;
+    }
+
+.ticket-confirmation-button {
+    font-weight: 600;
+    }
+
+.ticket-confirmation-journey-area {
+    padding: 0px 15px;
+    }
+
+.ticket-confirmation-journey {
+    font-weight: 600;
+    background-color: #17916F;
+    color: #fff;
+    }
+
+.ticket-confirmation-journey:hover {
+    color: #fff;
+    background-color: #05533e;
+    }

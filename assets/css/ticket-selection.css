@@ -1,0 +1,117 @@
+.train-info, .seat-selection-info, .seat-selection, .footer-area {
+    width: 100%;
+    }
+
+.train-info img, .seat-selection-info img, .seat-selection img, .footer-area img {
+    width: 100%;
+    }
+
+.passenger-details, .seat-selection {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    }
+
+.passenger-details-header > h5 {
+    color: #00008c;
+    font-size: 18px;
+    }
+
+.passenger-details-body {
+    padding-right: 60px;
+    }
+
+.passenger-details-footer {
+    margin-top: 60px;
+    }
+
+.passenger-details-footer .go-payment {
+    padding: 8px 25px;
+    font-weight: 600;
+    }
+
+.passenger-details-plus-icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #027E5B;
+    border-radius: 35px;
+    position: relative;
+    }
+
+.passenger-details-plus-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #027E5B;
+    }
+
+.passenger-details .passenger-details-plus-button {
+    display: flex;
+    font-weight: 600;
+    color: #027E5B;
+    }
+
+.passenger-details .passenger-details-plus-button:hover {
+    text-decoration: none;
+    }
+
+.add-passenger-text {
+    display: inline-block;
+    padding-left: 10px;
+    }
+
+.seat-selection-info {
+    background-color: #F4F5F9;
+    border-radius: 8px;
+    padding: 10px 20px;
+    }
+
+.seat-selection-info h4, .seat-selection-info p {
+    font-weight: 400;
+    margin-bottom: 0;
+    }
+
+.seat-selection-info h4 {
+    font-size: 20px;
+    }
+
+.seat-selection-symbol {
+    width: 40px;
+    height: 20px;
+    margin-left: 10px;
+    }
+
+.seat-selection-red-symbol {
+    background-color: #c16666;
+    }
+
+.seat-selection-green-symbol {
+    background-color: #6fe26d;
+    }
+
+.seat-selection-black-symbol {
+    background-color: #000;
+    }
+
+.seat-selection-coach-id-text {
+    font-weight: 600;
+    }
+
+.seat-selection-coach-number-first, .seat-selection-coach-number-second, .seat-selection-coach-number-third {
+    margin-left: 20px;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    font-weight: 600;
+    }
+
+.seat-selection-coach-number-first {
+    border: 1px solid green;
+    }
+
+.seat-selection-coach-number-second, .seat-selection-coach-number-third {
+    background-color: #9E9E9E;
+    color: #fff;
+    }

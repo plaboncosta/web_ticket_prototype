@@ -1,0 +1,138 @@
+@font-face {
+    font-family: IcoFont;
+    src: url('../fonts/icofont.woff');
+    }
+
+.ui-details img {
+    width: 100%;
+    }
+
+.ui-details .detailsContainer {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-gap: 20px;
+    margin: auto;
+    }
+
+.ui-details .ui-main-details {
+    padding-bottom: 20px;
+    border-bottom: 2px solid red;
+    }
+
+.ui-details .ui-details-card {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: 230px;
+    align-items: center;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+    }
+
+.ui-details .ui-head-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(194, 22, 22);
+    padding: 5px 20px;
+    width: 300px;
+    color: white;
+    border-radius: 0 0 250px/200px 0;
+    }
+
+.ui-details .ui-details-card div img {
+    position: absolute;
+    height: 230px;
+    top: 0;
+    right: 0;
+    width: 170px;
+    }
+
+.ui-details .ui-details-card div {
+    height: 120px;
+    }
+
+
+.ui-details .ui-details-card h6 {
+    font-weight: 700;
+    font-size: 20px;
+    }
+
+.ui-details .ui-smaller {
+    font-size: 12px;
+    }
+
+.ui-details .ui-sub-small {
+    font-size: 9px;
+    }
+
+.ui-details .red-text {
+    font-weight: 500;
+    font-size: 14px;
+    }
+
+.ui-details .gray-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #aaa;
+    }
+
+.ui-details .text-amount {
+    font-size: 16px;
+    font-weight: 600;
+    }
+
+.ui-details .title-margin {
+    margin-right: 8.5%;
+    }
+
+.ui-details .ui-route img {
+    height: 80px;
+    }
+
+.ui-details .ui-ticket-availability {
+    font-size: 19px;
+    color: darkblue;
+    }
+
+.ui-details .ui-availability-grid {
+    display: grid;
+    border-bottom: 2px solid #aaa;
+    padding: 10px 20px;
+    align-items: center;
+    grid-template-columns: repeat(6, 1fr);
+    }
+
+.ui-details .ui-availability-grid:last-child {
+    border: none;
+    }
+
+.ui-details .ui-availability-grid-container {
+    padding: 0 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+    }
+
+.ui-details .ui-availability-grid-container a {
+    background: #bb0000;
+    color: white;
+    font-size: 20px;
+    border: 1px solid #555;
+    border-radius: 30px;
+    font-weight: 600;
+    outline: none;
+    padding: 8px;
+    text-align: center;
+    }
+
+.ui-details-train-name {
+    font-size: 15px;
+    }
+
+#route1,
+#route2,
+#route3,
+#route4 {display: none}
