@@ -400,8 +400,37 @@ session_start();
                 </div>
             </div>
         </div>
-        <div>
-            <img src="./assets/images/filterDetails.png" alt="">
+        <div class="ui-filterBy">
+            <header class="d-flex"><p class="m-0">Filter By</p> <i class="icofont-filter"></i></header>
+            <div class="p-4">
+                <div class="position-relative">
+                    <p class="ui-filter-label">Train</p>
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" placeholder="Train Name">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-danger"><h5 class="m-0"><i class="icofont-train-line"></i>   </h5></span>
+                        </div>
+                    </div>
+                    <p class="text-danger">by Train Name</p>
+                </div>
+                <div class="position-relative">
+                    <p class="ui-filter-label">Date</p>
+                    <div class="form-group">
+                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                    </div>
+                    <p class="text-danger">by Date Of Journey</p>
+                </div>
+                <div class="position-relative">
+                    <p class="ui-filter-label">Time</p>
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" placeholder="Time">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-danger"><h5 class="m-0"><i class="icofont-apple-watch"></i></h5></span>
+                        </div>
+                    </div>
+                    <p class="text-danger">by Time of Journey</p>
+                </div>
+            </div>
         </div>
     </div>
 

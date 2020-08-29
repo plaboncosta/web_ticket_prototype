@@ -30,7 +30,7 @@ session_start();
     <div class="p-5 ui-profile-container">
         <div class="ui-selector">
             <div>
-                <p class="ui-root text-center">myDASHBOARD</p>
+                <p class="ui-root text-center">My Dashoboard</p>
                 <p id="profile" class="root-options">My Profile</p>
                 <p id="trip" class="root-options">My Trips</p>
                 <p id="meals" class="root-options">Meals</p>
@@ -40,7 +40,7 @@ session_start();
         </div>
         <div>
             <div id="pro1">
-                <h2><b>My Profile</b></h2>
+                <h3><b>My Profile</b></h3>
                 <div class="ui-sec-container shadowCustomMid">
                     <p>Complete your Profile <span class="ml-5">40%</span></p>
                     <div class="progress">
@@ -60,7 +60,7 @@ session_start();
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Profile</b></h2>
+                            <h3><b>Profile</b></h3>
                             <p class="mt-2">Basic info, for a faster booking experience</p>
                         </div>
                         <button class="btn btn-danger py-2 h-100 rounded-lg"><h4 class="m-0 px-4 "><b>Edit</b></h4>
@@ -82,7 +82,7 @@ session_start();
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Login Details</b></h2>
+                            <h3><b>Login Details</b></h3>
                             <p class="mt-2">Manage your email address mobile number and password</p>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ session_start();
                 <div class="ui-sec-container shadowCustomMid mb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Save Traveller(s)</b></h2>
+                            <h3><b>Save Traveller(s)</b></h3>
                             <p class="mt-2">You have 0 Traveller(s)</p>
                         </div>
                         <button class="btn btn-danger py-2 h-100 rounded-lg"><h4 class="m-0 px-4 "><b>Edit</b></h4>
@@ -116,7 +116,7 @@ session_start();
                 </div>
             </div>
             <div id="pro2">
-                <h2><b>My Trips</b></h2>
+                <h3><b>My Trips</b></h3>
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex w-100">
@@ -124,7 +124,7 @@ session_start();
                                 <img src="./assets/images/upcoming.png" alt="">
                             </div>
                             <div class="ml-4">
-                                <h2><b>UPCOMING</b></h2>
+                                <h3><b>UPCOMING</b></h3>
                                 <p class="mt-2">Upcoming Travel Tickets</p>
                             </div>
                         </div>
@@ -170,24 +170,24 @@ session_start();
                             <div class="mb-5">
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
-                                        <div class="w-50 d-flex">
+                                        <div class="w-50 d-flex mr-3">
                                             <div class="ui-avatar"><i class="icofont-user-alt-2"></i></div>
                                             <div>
-                                                <h4 class="mb-3"><b>Hasan Mahmud</b></h4>
+                                                <h5 class="mb-3"><b>Hasan Mahmud</b></h5>
                                                 <p><span>27 years old | Male</span></p>
                                             </div>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Class</span></p>
-                                            <h4><b>AC Berth Class</b></h4>
+                                            <h5><b>AC Berth Class</b></h5>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Date of Journey</span></p>
-                                            <h4><b>Aug 31, 2020</b></h4>
+                                            <h5><b>Aug 31, 2020</b></h5>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Fare</span></p>
-                                            <h4><b>BDT 1,689.00</b></h4>
+                                            <h5><b>BDT 1,689.00</b></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -199,24 +199,24 @@ session_start();
                             <div>
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
-                                        <div class="w-50 d-flex">
+                                        <div class="w-50 d-flex mr-3">
                                             <div class="ui-avatar"><i class="icofont-user-alt-2"></i></div>
                                             <div>
-                                                <h4><b>Hasan Mahmud</b></h4>
+                                                <h5><b>Hasan Mahmud</b></h5>
                                                 <p><span>27 years old | Male</span></p>
                                             </div>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Class</span></p>
-                                            <h4><b>AC Berth Class</b></h4>
+                                            <h5><b>AC Berth Class</b></h5>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Date of Journey</span></p>
-                                            <h4><b>Aug 31, 2020</b></h4>
+                                            <h5><b>Aug 31, 2020</b></h5>
                                         </div>
                                         <div class="w-50">
                                             <p><span>Fare</span></p>
-                                            <h4><b>BDT 1,689.00</b></h4>
+                                            <h5><b>BDT 1,689.00</b></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@ session_start();
                         </div>
                     </div>
                     <div>
-                        <h2 class="mb-4"><b>TICKET(S)</b></h2>
+                        <h3 class="mb-4"><b>TICKET(S)</b></h3>
                         <div class="ui-ticket">
                             <div class="row">
                                 <div class="col-md-5 border-right-dashed pr-4">
@@ -296,12 +296,12 @@ session_start();
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <button class="btn btn-block btn-danger ticket-confirmation-button px-0 py-4 ">
                                     <h4 class="mb-0"><b><i class="icofont-print"></i> Print the Ticket</b></h4>
                                 </button>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <button class="btn btn-block btn-danger ticket-confirmation-button py-4">
                                     <h4 class="mb-0"><b><i class="icofont-download"></i> Download</b></h4>
                                 </button>
@@ -315,7 +315,7 @@ session_start();
                             <img src="./assets/images/noCancel.png" alt="">
                         </div>
                         <div class="ml-4">
-                            <h2><b>Looks empty, you've no cancelled bookings.</b></h2>
+                            <h3><b>Looks empty, you've no cancelled bookings.</b></h3>
                             <p class="mt-2 mb-0">Great! Looks like you've cno cancelled bookings.</p>
                         </div>
                     </div>
@@ -326,18 +326,18 @@ session_start();
                             <img src="./assets/images/completedTrip.png" alt="">
                         </div>
                         <div class="ml-4">
-                            <h2><b>Completed Trips</b></h2>
+                            <h3><b>Completed Trips</b></h3>
                             <p class="mt-2 mb-0">Your Completed booking(s)</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="pro3">
-                <h2><b>Meals</b></h2>
+                <h3><b>Meals</b></h3>
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Book a Meal</b></h2>
+                            <h3><b>Book a Meal</b></h3>
                             <p class="mt-2 mb-0">Add a Meal</p>
                         </div>
                         <button class="btn btn-danger py-2 h-100 rounded-lg"><h4 class="m-0 px-4 "><b>Add</b></h4>
@@ -351,7 +351,7 @@ session_start();
                                 <img src="./assets/images/bhunaKhi.png" alt="">
                             </div>
                             <div class="ml-4">
-                                <h2><b>Bhuna Khichri</b></h2>
+                                <h3><b>Bhuna Khichri</b></h3>
                                 <p class="mt-2">BDT 300</p>
                             </div>
                         </div>
@@ -372,7 +372,7 @@ session_start();
                                 <img src="./assets/images/patlaKhi.png" alt="">
                             </div>
                             <div class="ml-4">
-                                <h2><b>Patla Khichri</b></h2>
+                                <h3><b>Patla Khichri</b></h3>
                                 <p class="mt-2">BDT 300</p>
                             </div>
                         </div>
@@ -393,7 +393,7 @@ session_start();
                                 <img src="./assets/images/morogPol.png" alt="">
                             </div>
                             <div class="ml-4">
-                                <h2><b>Morog Polao</b></h2>
+                                <h3><b>Morog Polao</b></h3>
                                 <p class="mt-2">BDT 200</p>
                             </div>
                         </div>
@@ -414,7 +414,7 @@ session_start();
                                 <img src="./assets/images/mistiDoi.png" alt="">
                             </div>
                             <div class="ml-4">
-                                <h2><b>Mishti Doi</b></h2>
+                                <h3><b>Mishti Doi</b></h3>
                                 <p class="mt-2">BDT 50</p>
                             </div>
                         </div>
@@ -430,29 +430,29 @@ session_start();
                 </div>
             </div>
             <div id="pro4">
-                <h2><b>SMS Subscription</b></h2>
+                <h3><b>SMS Subscription</b></h3>
 
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="mb-4">
-                        <h2 class="mb-3"><b>Buy SMS PACK</b></h2>
+                        <h3 class="mb-3"><b>Buy SMS PACK</b></h3>
                         <p class="mt-2">Activate SMS Pack and Stay Connected</p>
                     </div>
                     <div class="d-flex w-100 justify-content-between align-items-center">
                         <div>
                             <p>Package Name</p>
-                            <h4><b>BRITS SMS PACK</b></h4>
+                            <h5><b>BRITS SMS PACK</b></h5>
                         </div>
                         <div>
                             <p>Price</p>
-                            <h4><b>BDT 50</b></h4>
+                            <h5><b>BDT 50</b></h5>
                         </div>
                         <div>
                             <p>No of SMS</p>
-                            <h4><b>100</b></h4>
+                            <h5><b>100</b></h5>
                         </div>
                         <div>
                             <p>Validity</p>
-                            <h4><b>180 days</b></h4>
+                            <h5><b>180 days</b></h5>
                         </div>
                         <button class="w-25 btn btn-danger py-2 h-100 rounded-lg"><h4 class="m-0 px-4 "><b>Buy</b></h4>
                         </button>
@@ -460,35 +460,35 @@ session_start();
                 </div>
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="mb-4">
-                        <h2 class="mb-3"><b>Active SMS PACK</b></h2>
+                        <h3 class="mb-3"><b>Active SMS PACK</b></h3>
                         <p class="mt-2">View SMS Pack Status</p>
                     </div>
                     <div class="d-flex w-75 justify-content-between align-items-center">
                         <div>
                             <p>Package Name</p>
-                            <h4><b>BRITS SMS PACK</b></h4>
+                            <h5><b>BRITS SMS PACK</b></h5>
                         </div>
                         <div>
                             <p>SMS Send</p>
-                            <h4><b>05 of 100</b></h4>
+                            <h5><b>05 of 100</b></h5>
                         </div>
                         <div>
                             <p>Pack Valid Till</p>
-                            <h4><b>26-Dec-2020</b></h4>
+                            <h5><b>26-Dec-2020</b></h5>
                         </div>
                         <div>
                             <p>Active</p>
-                            <h4><b>Yes</b></h4>
+                            <h5><b>Yes</b></h5>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="pro5">
-                <h2><b>Complaint</b></h2>
+                <h3><b>Complaint</b></h3>
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Register a Complaint</b></h2>
+                            <h3><b>Register a Complaint</b></h3>
                             <p class="mt-2">Add a Complaint</p>
                         </div>
                         <button class="btn btn-danger px-4 mr-4 py-2 h-100 rounded-lg">
@@ -499,7 +499,7 @@ session_start();
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Complaint Status</b></h2>
+                            <h3><b>Complaint Status</b></h3>
                             <p class="mt-2">View Status</p>
                         </div>
                         <button class="btn btn-success px-4 mr-4 py-2 h-100 rounded-lg">
@@ -510,7 +510,7 @@ session_start();
                 <div class="ui-sec-container shadowCustomMid">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h2><b>Resolved Complaint(s)</b></h2>
+                            <h3><b>Resolved Complaint(s)</b></h3>
                             <p class="mt-2">View Resolve</p>
                         </div>
                         <button class="btn btn-success px-4 mr-4 py-2 h-100 rounded-lg">

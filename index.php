@@ -14,6 +14,7 @@ include 'config.php';
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
     <style>
         .modal-lg {
             width: 650px !important;
@@ -165,8 +166,12 @@ include 'config.php';
     </div>
 
     <!--  Home Page Body Area  -->
-    <div class="home-page-body">
-        <img src="./assets/images/home-page-body.png" alt="">
+    <div class="home-page-body bg-white">
+        <div class="ui-top position-relative">
+            <p class="ui-title">FIND YOUR WAY</p>
+            <p class="ui-subTitle">We Make Travel Easy</p>
+        </div>
+        <img src="./assets/images/slider.png" alt="">
     </div>
 
     <!--  Footer Area  -->
