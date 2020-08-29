@@ -33,6 +33,7 @@
     background-color: #fff;
     border-radius: 8px;
     padding: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
     }
 
 .passenger-details-header > h5 {
@@ -203,6 +204,20 @@
 
 .ui-train-container .bg-green{background: #34da90}
 .ui-train-container .bg-red{background: #fe838f}
+
+.ui-train-container .ui-overlay::before{
+    content: "";
+    width: 96%;
+    height: 96%;
+    position: absolute;
+    border-radius: 13px;
+    background: rgba(154, 154, 154, .9);
+    }
+
+.seat-selection #valOne,
+.seat-selection #valTwo{
+    color: green !important;
+    }
 
 
 

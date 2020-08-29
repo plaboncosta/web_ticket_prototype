@@ -174,10 +174,10 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             <div class="d-flex">
                                 <p class="pl-3 seat-selection-coach-id-text">Select Coach ID</p>
-                                <div class="seat-selection-coach-number-first">
+                                <div class="seat-selection-coach-number-first cursor-pointer" id="toggleSit">
                                     A1-01
                                 </div>
                                 <div class="seat-selection-coach-number-second">
@@ -189,7 +189,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                             </div>
                             <div class="d-flex justify-content-start">
                                 <div class="ui-train-container">
-                                    <div class="ui-train-subContainer">
+                                    <div class="ui-train-subContainer ui-overlay">
                                         <div class="d-flex h-100 flex-column justify-content-between">
                                             <div class="ui-toilet">Toilet</div>
                                             <div class="ui-toilet">Toilet</div>
@@ -284,6 +284,13 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="d-flex flex-column justify-content-center h-100 ml-2">
+                                <p><b>Selected Seats</b></p>
+                                <p class="text-danger"><b>One: <span id="valOne"></span></b></p>
+                                <p class="text-danger"><b>Two: <span id="valTwo"></span></b></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -371,6 +378,54 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
             }));
         }
         
+    });
+
+    let valOne = document.getElementById('valOne');
+    let valTwo = document.getElementById('valTwo');
+    let togSit = document.getElementById('toggleSit');
+    let overLay = document.querySelector('.ui-train-subContainer');
+    let greenSit = document.querySelector('.bg-green');
+    let redSit = document.querySelector('.bg-red');
+    let selectedSitOne = null;
+    let selectedSitTwo = null;
+
+    togSit.addEventListener('click', () => {
+        overLay.classList.toggle('ui-overlay');
+        if (togSit.style.background === "darkgreen") {
+            togSit.style.background = "white";
+            togSit.style.color = 'black';
+        } else {
+            togSit.style.background = "darkgreen";
+            togSit.style.color = 'white';
+        }
+    });
+
+    greenSit.addEventListener('click', () => {
+        if (togSit.style.background === "darkgreen") {
+            if (greenSit.style.background === 'darkred') {
+                greenSit.style.background = '#34da90';
+                selectedSitOne = null;
+                valOne.innerHTML = null;
+            } else {
+                greenSit.style.background = 'darkred';
+                selectedSitOne = 'A1-01-L-31';
+                valOne.innerHTML = 'A1-01-L-31';
+            }
+        }
+    });
+
+    redSit.addEventListener('click', () => {
+        if (togSit.style.background === "darkgreen") {
+            if (redSit.style.background === 'darkred') {
+                redSit.style.background = '#fe838f';
+                selectedSitTwo = null;
+                valTwo.innerHTML = null;
+            } else {
+                redSit.style.background = 'darkred';
+                selectedSitTwo = 'A1-01-L-32';
+                valTwo.innerHTML = 'A1-01-L-32';
+            }
+        }
     });
     
     function addPassenger(){

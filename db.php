@@ -125,7 +125,11 @@ function addUser($conn){
     
     if($conn->query($sql) === true){
         $_SESSION["user_id"] = $conn->insert_id;
-        $response            = array(
+        $user_id             = $conn->insert_id;
+        $search_id           = $_SESSION["ticket_search_insert_id"];
+        $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
+        
+        $response = array(
             'success' => true,
             'message' => 'Added successfully'
         );
@@ -145,7 +149,11 @@ function loginUser($conn){
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $_SESSION["user_info"] = $row;
-            $response              = array(
+            $user_id               = $row['id'];
+            $search_id             = $_SESSION["ticket_search_insert_id"];
+            $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
+            
+            $response = array(
                 'success' => true,
                 'message' => 'User exists',
                 'data'    => $row
