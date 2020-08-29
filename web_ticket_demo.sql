@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2020 at 06:12 AM
+-- Generation Time: Aug 29, 2020 at 10:14 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -25,6 +25,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `passengers`
+--
+
+CREATE TABLE `passengers` (
+  `id` int(11) NOT NULL,
+  `search_id` int(11) DEFAULT NULL,
+  `name` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `nationality` int(11) DEFAULT NULL,
+  `gender` varchar(15) DEFAULT NULL,
+  `is_infant` tinyint(2) DEFAULT 0,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `search_id` int(11) UNSIGNED DEFAULT NULL,
+  `payment_amount` double DEFAULT NULL,
+  `payment_option` varchar(27) DEFAULT NULL,
+  `transaction_id` varchar(128) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ticket_search`
 --
 
@@ -36,6 +70,8 @@ CREATE TABLE `ticket_search` (
   `class` varchar(63) DEFAULT NULL,
   `passenger_no` varchar(11) DEFAULT NULL,
   `child_no` varchar(11) DEFAULT NULL,
+  `search_by` int(11) DEFAULT NULL,
+  `status` int(4) UNSIGNED NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -44,8 +80,8 @@ CREATE TABLE `ticket_search` (
 -- Dumping data for table `ticket_search`
 --
 
-INSERT INTO `ticket_search` (`id`, `departure`, `arrival`, `date`, `class`, `passenger_no`, `child_no`, `created_at`, `updated_at`) VALUES
-(7, 'Dhaka', 'Khulna', '2020-09-04', 'S_CHAIR', '01', '', '2020-08-29 05:22:28', '2020-08-29 05:42:31');
+INSERT INTO `ticket_search` (`id`, `departure`, `arrival`, `date`, `class`, `passenger_no`, `child_no`, `search_by`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Dhaka', 'Dinajpur', '2020-09-04', 'AC_B', '01', '01', 1, 1, '2020-08-29 10:08:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -70,11 +106,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `national_id`, `password`, `phone_number`, `terms_of_service`, `created_at`) VALUES
-(3, 'Plabon', 'Costa', 'plabon@pentabd.com', '03950648069809468', '123456', '01792839480', 1, '2020-08-29 05:06:35');
+(1, 'Plabon', 'Costa', 'plabon@pentabd.com', '5273095482529', '123456', '01310820283', 1, '2020-08-29 10:09:04');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `passengers`
+--
+ALTER TABLE `passengers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `ticket_search`
@@ -96,13 +144,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `ticket_search`
 --
 ALTER TABLE `ticket_search`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
