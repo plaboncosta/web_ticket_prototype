@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2020 at 10:14 AM
+-- Generation Time: Aug 29, 2020 at 02:02 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `passengers` (
   `search_id` int(11) DEFAULT NULL,
   `name` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `nationality` int(11) DEFAULT NULL,
+  `nationality` varchar(63) DEFAULT NULL,
   `gender` varchar(15) DEFAULT NULL,
   `is_infant` tinyint(2) DEFAULT 0,
   `createdAt` datetime NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `passengers` (
 CREATE TABLE `payments` (
   `id` int(11) NOT NULL,
   `search_id` int(11) UNSIGNED DEFAULT NULL,
-  `payment_amount` double DEFAULT NULL,
+  `payment_amount` varchar(13) DEFAULT NULL,
   `payment_option` varchar(27) DEFAULT NULL,
   `transaction_id` varchar(128) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
@@ -76,13 +76,6 @@ CREATE TABLE `ticket_search` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ticket_search`
---
-
-INSERT INTO `ticket_search` (`id`, `departure`, `arrival`, `date`, `class`, `passenger_no`, `child_no`, `search_by`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Dhaka', 'Dinajpur', '2020-09-04', 'AC_B', '01', '01', 1, 1, '2020-08-29 10:08:28', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -100,13 +93,6 @@ CREATE TABLE `users` (
   `terms_of_service` tinyint(1) DEFAULT 0,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `national_id`, `password`, `phone_number`, `terms_of_service`, `created_at`) VALUES
-(1, 'Plabon', 'Costa', 'plabon@pentabd.com', '5273095482529', '123456', '01310820283', 1, '2020-08-29 10:09:04');
 
 --
 -- Indexes for dumped tables
@@ -141,16 +127,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `passengers`
+--
+ALTER TABLE `passengers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `ticket_search`
 --
 ALTER TABLE `ticket_search`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
