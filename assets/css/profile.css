@@ -1,63 +1,181 @@
 .ui-profile img{
     width: 100%;
-}
+    }
 
 .ui-profile .ui-profile-container{
     display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 20% 60%;
-}
+    grid-gap: 50px;
+    background: white;
+    grid-template-columns: 20% 78%;
+    }
 
 .ui-profile .ui-selector{
-    background: #eee;
-    width: 100%;
+    background: #f4f5f9;
+    width: 95%;
     height: 450px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 3px rgba(0,0,0,.2);
-}
+    }
 
 .ui-profile .ui-selector p{
     font-size: 26px;
     font-weight: 600;
     padding: 10px 25px;
-}
+    }
 
 .ui-profile #profile{
     background: #90c7b4;
-}
+    }
 
 .ui-profile .root-options{
     cursor: pointer;
-}
+    }
 
 .ui-profile .ui-selector .root-options:hover{
     background: #90c7b4;
-}
+    }
 
 .ui-profile .ui-root{
     background: #027e5b;
     color: white;
-}
+    }
 
 .ui-profile .ui-page-title{
     font-size: 26px;
     margin-left: 40px;
-}
+    }
+
+.ui-profile .ui-sec-container .progress{border-radius: 50px}
+
+.ui-profile .ui-sec-container p{
+    font-size: 19px;
+    font-weight: 500;
+    color: #555;
+    }
+.ui-profile .ui-sec-container .ui-options{
+    background: #e8ebf8;
+    border-radius: 15px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+    }
+
+.ui-profile .ui-sec-container .ui-options h5{color: #fa2f32; margin: 0}
+.ui-profile .ui-sec-container .ui-options div{width: 50%}
+.ui-profile .ui-sec-container .ui-options i{
+    width: 40px;
+    height: 40px;
+    color: white;
+    background: #006b4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 5%;
+    }
+
+.ui-profile .ui-sec-container .train-info .ui-header{
+    color: #111b77;
+    margin-bottom: 3.5%;
+    }
+
+.ui-profile .ui-sec-container .train-info .ui-top{
+    font-size: 18px;
+    }
+.ui-profile .ui-sec-container .train-info i{
+    font-size: 25px;
+    }
+.ui-profile .ui-sec-container .train-info .ui-avatar i{
+    font-size: 50px;
+    }
+
+.ui-profile .ui-sec-container .train-info .bg-pink{
+    background: #ffd6da;
+    height: 50px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    }
+
+.ui-ticket{
+    width: 100%;
+    background: #052014;
+    padding: 40px;
+    border-radius: 13px;
+    }
+
+.ui-ticket .ui-locationTo::before{
+    content: "";
+    width: 60%;
+    height: 2px;
+    border-radius: 5px;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #efee01 !important;
+    }
+
+.ui-ticket .text-yellow{
+    color: #efee01 !important;
+    }
+
+.ui-ticket .ui-time{
+    color: rgba(255,255,255,.7) !important;
+    font-size: 17px !important;
+    }
+
+.ui-ticket p{color: white !important;}
+
+.ui-profile .ui-sec-container .train-info .ui-avatar {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    margin-right: 5%;
+    border-radius: 50%;
+    align-items: center;
+    border: 1px solid #444;
+    justify-content: center;
+    }
+
+.ui-profile .ui-sec-container .train-info{
+    background: #f4f5f9;
+    padding: 3%;
+    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    }
+
+.ui-profile .ui-sec-container .ui-info{
+    border-bottom: 1.5px solid #aaa;
+    margin-bottom: 1%;
+    }
+
+.ui-profile .ui-sec-container{
+    width: 100%;
+    padding: 25px 60px;
+    border-radius: 15px;
+    background: white;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    }
 
 #pro1{
     display: block;
-}
+    }
 
 #pro2,
 #pro3,
 #pro4,
 #pro5{
     display: none;
-}
+    }
 
 @media only screen and (max-width: 1800px){
     .ui-profile .ui-profile-container{
         grid-template-columns: 25% 70%;
+        }
     }
-}
