@@ -340,7 +340,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     <div class="passenger-details-footer">
                         <div class="row">
                             <div class="col-md-12 d-flex justify-content-end">
-                                <a href="payment.html"
+                                <a href="payment.php"
                                    class="go-to-payment btn btn-danger banner-form-input text-decoration-none font-weight-bold px-3">Go
                                     to Payment
                                 </a>
