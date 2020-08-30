@@ -36,6 +36,17 @@ if($result_two->num_rows > 0){
     }
 }
 
+/* Fetch Payments Information */
+$sql_three       = "select * from payments where search_id = '$id';";
+$result_three    = $conn->query($sql_three);
+$payment_details = '';
+
+if($result_three->num_rows > 0){
+    while($row = $result_three->fetch_assoc()){
+        $payment_details = $row;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +94,8 @@ if($result_two->num_rows > 0){
                                                 $item['id'] :
                                                 '' ?>">
                                                 <?php if( !empty($item['image_url'])){ ?>
-                                                    <img src="<?php echo $base_url . '/' . $item['image_url'] ?>"
+                                                    <img src="<?php echo $base_url . '/' .
+                                                                         $item['image_url'] ?>"
                                                          class="profile-image" alt="">
                                                 <?php } else{ ?>
                                                     <div class="ui-avatar ui-avatar-upload-container">
@@ -554,8 +566,123 @@ if($result_two->num_rows > 0){
                             <div class="ticket-confirmation-content">
                                 <div class="ticket-confirmation-header">
                                     <div class="d-flex justify-content-center">
-                                        <img class="img-fluid" src="./assets/images/ticket-confirmation.png"
-                                             alt="">
+                                        <div class="confirm-check-area">
+                                            <i class="icofont-tick-mark"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-center confirm-modal-message">You have successfully Booked
+                                        your Ticket!</p>
+                                    <div class="ticket-data-area">
+                                        <div class="ui-ticket">
+                                            <div class="row">
+                                                <div class="col-md-5 border-right-dashed pr-4">
+                                                    <h4 class="text-white ticket-title-bar-text"><b>PANCHAGARH
+                                                            EXPRESS</b></h4>
+                                                    <p class="mb-3"><b>(793)</b></p>
+                                                    <div class="d-flex justify-content-between w-100">
+                                                        <p><b>AC Berth Class</b></p>
+                                                        <p><b>General Quota</b></p>
+                                                    </div>
+                                                    <div class="w-100">
+                                                        <div class="d-flex  justify-content-between">
+                                                            <p>
+                                                                <b><?php echo !empty($ticket_search['departure']) ?
+                                                                        $ticket_search['departure'] :
+                                                                        '' ?></b></p>
+                                                            <p>
+                                                                <b><?php echo !empty($ticket_search['arrival']) ?
+                                                                        $ticket_search['arrival'] : '' ?></b>
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex position-relative ui-locationTo justify-content-between">
+                                                            <div>
+                                                                <p class="text-yellow"><b>DAKA</b></p>
+                                                                <p class="mb-0 ui-time">12:10 AM</p>
+                                                                <p class="mb-0 ui-time"><?php echo !empty($ticket_search['date']) ?
+                                                                        date("d/m/Y",
+                                                                             strtotime($ticket_search['date'])) :
+                                                                        '' ?></p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="text-right text-yellow"><b>DGP</b>
+                                                                </p>
+                                                                <p class="mb-0 text-right ui-time">12:10
+                                                                    AM</p>
+                                                                <p class="mb-0 text-right ui-time"><?php echo !empty($ticket_search['date']) ?
+                                                                        date("d/m/Y",
+                                                                             strtotime($ticket_search['date'])) :
+                                                                        '' ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="px-3">
+                                                        <div class="d-flex justify-content-between mb-4">
+                                                            <h4 class="text-white ticket-title-bar-text"><b>Ticket
+                                                                    No: </b><b class="text-yellow">2425188484961</b>
+                                                            </h4>
+                                                            <h4 class="text-white ticket-title-bar-text"><b>07h
+                                                                    27m</b></h4>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between pb-2 border-bottom-dashed mb-4">
+                                                            <div>
+                                                                <p class="mb-2">
+                                                                    Passenger <?php echo $total_passenger; ?></p>
+                                                                <?php foreach($passenger_info as $key => $item){ ?>
+                                                                    <p class="mb-2"><?php echo !empty($item['name']) ?
+                                                                            $item['name'] : ''; ?>
+                                                                        , <?php echo !empty($item['age']) ?
+                                                                            $item['age'] : ''; ?>
+                                                                        , <?php echo !empty($item['gender']) ?
+                                                                            ($item['gender'] == 'Male' ? 'M' :
+                                                                                'F') :
+                                                                            ''; ?></p>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <p class="mb-2">Coach</p>
+                                                                <p class="mb-2">A1-01</p>
+                                                                <p class="mb-2">A1-01</p>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <p class="mb-2">Seat / Berth</p>
+                                                                <p class="mb-2"><span
+                                                                            class="text-yellow">31</span>,
+                                                                    Upper
+                                                                    Berth</p>
+                                                                <p class="mb-2"><span
+                                                                            class="text-yellow">32</span>,
+                                                                    Lower
+                                                                    Berth</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <p class="mb-2">Total Fare</p>
+                                                                <p class="mb-2">Payment Mode</p>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-right text-yellow">BDT
+                                                                    2980.00</h6>
+                                                                <?php if( !empty($payment_details['payment_option'])){ ?>
+                                                                    <?php if($payment_details['payment_option'] ==
+                                                                             'bKash'){ ?>
+                                                                        <p class="text-right mb-0">MFS
+                                                                            - <?php echo $payment_details['payment_option']; ?></p>
+                                                                    <?php } else{ ?>
+                                                                        <p class="text-right mb-0">Credit Card
+                                                                            - VISA</p>
+                                                                    <?php } ?>
+                                                                <?php } ?>
+                                                                <p class="text-right ">
+                                                                    P6541-xxxx-xxxx-xxxx</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="ticket-confirmation-body">
@@ -673,13 +800,10 @@ if($result_two->num_rows > 0){
             method: 'POST',
             data  : $("#bKashForm").serialize(),
         }).done(function (response){
-            let result = JSON.parse(response);
-            if (result.success){
-                $("#bkash-pin-modal").modal('hide');
-                $("#ticket-confirmation").modal('show');
-            } else{
-                alert('Something went wrong');
-            }
+            $("#ticket-data-area").empty();
+            $("#ticket-data-area").append(response);
+            $("#bkash-pin-modal").modal('hide');
+            $("#ticket-confirmation").modal('show');
         });
     }
     
@@ -689,13 +813,10 @@ if($result_two->num_rows > 0){
             method: 'POST',
             data  : $("#visaForm").serialize(),
         }).done(function (response){
-            let result = JSON.parse(response);
-            if (result.success){
-                $("#visa-card").modal('hide');
-                $("#ticket-confirmation").modal('show');
-            } else{
-                alert('Something went wrong');
-            }
+            $("#ticket-data-area").empty();
+            $("#ticket-data-area").append(response);
+            $("#visa-card").modal('hide');
+            $("#ticket-confirmation").modal('show');
         });
     }
     

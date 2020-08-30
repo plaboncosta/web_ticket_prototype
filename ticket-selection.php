@@ -297,7 +297,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 </div>
                                 <div class="col-md-3">
                                     <label class="d-block font-weight-bold">&nbsp;</label>
-                                    <input type="checkbox" name="infant[]" id="infant" class="infant_class">
+                                    <input type="checkbox" name="infant[]" class="infant_class">
                                     <label for="infant"><span class="d-inline-block pl-2"><strong>Infant</strong></label>
                                 <span>(Travelling with a child)</span></span>
                                 </div>
@@ -427,7 +427,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 </div>
                                 <div class="col-md-3">
                                     <label class="d-block font-weight-bold" for="infant">&nbsp;</label>
-                                    <input type="checkbox" name="infant[]" id="infant" class="infant_class">
+                                    <input type="checkbox" name="infant[]" class="infant_class">
                                     <label for="infant"><span class="d-inline-block pl-2"><strong>Infant</strong></label>
                                 <span>(Travelling with a child)</span></span>
                                 </div>

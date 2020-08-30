@@ -231,14 +231,140 @@ function addPaymentInformation($conn){
     
     if($conn->query($sql) === true){
         $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 3 WHERE id = '$search_id'");
-        $response = array(
-            'success' => true,
-            'message' => 'Added successfully'
-        );
-        echo json_encode($response);
+        
+        /* Fetch Search Ticket Data */
+        $sql           = "select * from ticket_search where id = '$search_id';";
+        $result        = $conn->query($sql);
+        $ticket_search = '';
+        
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $ticket_search = $row;
+            }
+        }
+        
+        /* Fetch Passenger Data */
+        $sql_two        = "select * from passengers where search_id = '$search_id'";
+        $result_two     = $conn->query($sql_two);
+        $passenger_info = array();
+        
+        if($result_two->num_rows > 0){
+            while($row = $result_two->fetch_assoc()){
+                array_push($passenger_info, $row);
+            }
+        }
+        
+        /* Fetch Payments Information */
+        $sql_three       = "select * from payments where search_id = '$search_id';";
+        $result_three    = $conn->query($sql_three);
+        $payment_details = '';
+        
+        if($result_three->num_rows > 0){
+            while($row = $result_three->fetch_assoc()){
+                $payment_details = $row;
+            }
+        }
+        
+        echo getTicketContent($ticket_search, $passenger_info, $payment_details);
     } else{
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+}
+
+function getTicketContent($ticket_search, $passenger_info, $payment_details){
+    $passenger_str = '';
+    foreach($passenger_info as $key => $item){
+        $passenger_str .= '<p class="mb-2">' . $item['name'] . ', ' . $item['age'] . ', ' .
+                          ($item['gender'] ==
+                           'Male' ? 'M' : 'F') . '</p>';
+    }
+    
+    $total_passenger = ($ticket_search['passenger_no'] ? $ticket_search['passenger_no'] : 0) +
+                       ($ticket_search['child_no'] ? $ticket_search['child_no'] : 0);
+    
+    $payment_str = '';
+    if($payment_details['payment_option'] == 'bKash'){
+        $payment_str .= '<p class="text-right mb-0">MFS - ' . $payment_details['payment_option'];
+    } else{
+        $payment_str .= '<p class="text-right mb-0">Credit Card - VISA</p>';
+    }
+    
+    return '
+    <div class="ui-ticket">
+                                        <div class="row">
+                                            <div class="col-md-5 border-right-dashed pr-4">
+                                                <h4 class="text-white ticket-title-bar-text"><b>PANCHAGARH EXPRESS</b></h4>
+                                                <p class="mb-3"><b>(793)</b></p>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <p><b>AC Berth Class</b></p>
+                                                    <p><b>General Quota</b></p>
+                                                </div>
+                                                <div class="w-100">
+                                                    <div class="d-flex  justify-content-between">
+                                                        <p><b>' . $ticket_search['departure'] . '</b></p>
+                                                        <p><b>' . $ticket_search['arrival'] . '</b></p>
+                                                    </div>
+                                                    <div class="d-flex position-relative ui-locationTo justify-content-between">
+                                                        <div>
+                                                            <p class="text-yellow"><b>DAKA</b></p>
+                                                            <p class="mb-0 ui-time">12:10 AM</p>
+                                                            <p class="mb-0 ui-time">
+                                                            ' .
+           date("d/m/Y", strtotime($ticket_search['date'])) . '
+                                                         </p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-right text-yellow"><b>DGP</b></p>
+                                                            <p class="mb-0 text-right ui-time">12:10 AM</p>
+                                                            <p class="mb-0 text-right ui-time">
+                                                            ' .
+           date("d/m/Y", strtotime($ticket_search['date'])) . '
+                                                           </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="px-3">
+                                                    <div class="d-flex justify-content-between mb-4">
+                                                        <h4 class="text-white ticket-title-bar-text"><b>Ticket No: </b><b class="text-yellow">2425188484961</b>
+                                                        </h4>
+                                                        <h4 class="text-white ticket-title-bar-text"><b>07h 27m</b></h4>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between pb-2 border-bottom-dashed mb-4">
+                                                        <div>
+                                                            <p class="mb-2">Passenger ' . $total_passenger . '</p>
+                                                            ' . $passenger_str . '
+                                                            </div>
+                                                        <div class="text-center">
+                                                            <p class="mb-2">Coach</p>
+                                                            <p class="mb-2">A1-01</p>
+                                                            <p class="mb-2">A1-01</p>
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <p class="mb-2">Seat / Berth</p>
+                                                            <p class="mb-2"><span class="text-yellow">31</span>, Upper
+                                                                Berth</p>
+                                                            <p class="mb-2"><span class="text-yellow">32</span>, Lower
+                                                                Berth</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <p class="mb-2">Total Fare</p>
+                                                            <p class="mb-2">Payment Mode</p>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="text-right text-yellow">BDT 2980.00</h6>
+                                                            ' . $payment_str . '
+                                                            <p class="text-right ">P6541-xxxx-xxxx-xxxx</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    ';
 }
 
 function savePassengerFile($conn){

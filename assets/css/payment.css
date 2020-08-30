@@ -279,3 +279,58 @@
     font-size: 16px;
     padding: 16px 32px;
     }
+
+.confirm-check-area {
+    width: 70px;
+    height: 70px;
+    background-color: #d1dcd1;
+    border-radius: 50%;
+    position: relative;
+    }
+
+.confirm-check-area i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #315e31;
+    font-size: 28px;
+    transform: translate(-50%, -50%);
+    }
+
+.confirm-modal-message {
+    font-weight: 600;
+    }
+
+.ui-ticket{
+    width: 100%;
+    background: #052014;
+    padding: 10px 0px 0px 10px;
+    border-radius: 13px;
+    }
+
+.ui-ticket .ui-locationTo::before{
+    content: "";
+    width: 60%;
+    height: 2px;
+    border-radius: 5px;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #efee01 !important;
+    }
+
+.ui-ticket .text-yellow{
+    color: #efee01 !important;
+    }
+
+.ui-ticket .ui-time{
+    color: rgba(255,255,255,.7) !important;
+    font-size: 17px !important;
+    }
+
+.ui-ticket p{color: white !important;}
+
+.ticket-title-bar-text {
+    font-size: 16px;
+    }
