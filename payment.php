@@ -695,11 +695,12 @@ if($result_three->num_rows > 0){
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="downloadTicket()"
-                                                    class="btn btn-block btn-danger ticket-confirmation-button py-3">
+                                            <a href="mpdf.php"
+                                               class="btn btn-block btn-danger ticket-confirmation-button py-3 text-decoration-none text-light"
+                                               download="">
                                                 <i class="icofont-download"></i>
                                                 Download
-                                            </button>
+                                            </a>
                                         </div>
                                         <div class="col-md-4">
                                             <button onclick="window.location.href = 'profile.php'"
@@ -821,19 +822,8 @@ if($result_three->num_rows > 0){
     }
     
     function printTicket(){
-        $("#print-ticket-modal").modal('show');
-        $("#print-ticket").on("load", function (){
-            $(this).contents().find('img').css({width: '100%', height: '100%', objectFit: 'cover'});
-            
-        });
-    }
-    
-    function downloadTicket(){
-        $("#download-ticket-modal").modal('show');
-        $("#download-ticket").on("load", function (){
-            $(this).contents().find('img').css({width: '100%', height: '100%', objectFit: 'cover'});
-            
-        });
+        w = window.open('mpdf.php');
+        w.print();
     }
     
     function uploadPassengerFile(id){

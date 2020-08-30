@@ -346,6 +346,45 @@ include 'config.php';
             </div>
         </div>
     </div>
+
+    <!--  OTP Modal  -->
+    <button class="btn btn-success" data-toggle="modal" data-target="#mobile-otp-modal">OTP</button>
+    <div class="modal fade" id="mobile-otp-modal" tabindex="-1" role="dialog" aria-labelledby="mobileOtpModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="login-modal-close-button">
+                    <i class="icofont-close-line-circled" data-dismiss="modal"></i>
+                </div>
+                <div class="modal-header login-modal-header-area">
+                    <h5 class="modal-title login-modal-title" id="mobileOtpModal">OTP Confirmation</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <form onsubmit="confirmOTPNumber(); return false;" id="otpForm">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="d-block font-weight-bold" for="otp_number">OTP
+                                            Number</label>
+                                        <input type="text" class="form-control banner-form-input"
+                                               name="otp_number" minlength="5" maxlength="5"
+                                               id="mobile_number" placeholder="OTP Number" required>
+                                    </div>
+                                    <div class="col-md-12 pt-3">
+                                        <button type="submit"
+                                                class="btn btn-danger btn-block font-weight-bold banner-form-input login-modal-button">
+                                            Confirm
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Js Link -->
@@ -384,7 +423,7 @@ include 'config.php';
             let result = JSON.parse(response);
             if (result.success){
                 $("#registration-modal").modal('hide');
-                window.location.href = 'trainDetails.php';
+                $("#mobile-otp-modal").modal('show');
             }
         });
     }
@@ -426,6 +465,11 @@ include 'config.php';
                 $("#login-modal").modal('show');
             }
         });
+    }
+    
+    function confirmOTPNumber(){
+        $("#mobile-otp-modal").modal('hide');
+        window.location.href = 'trainDetails.php';
     }
 </script>
 </body>

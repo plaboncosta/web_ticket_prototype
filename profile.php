@@ -377,14 +377,24 @@ if($result_three->num_rows > 0){
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-4">
-                                <button class="btn btn-block btn-danger ticket-confirmation-button px-0 py-4 ">
-                                    <h4 class="mb-0"><b><i class="icofont-print"></i> Print the Ticket</b>
+                                <button id="e_ticket_print"
+                                        class="btn btn-block btn-danger ticket-confirmation-button px-0 py-4 ">
+                                    <h4 class="mb-0">
+                                        <b><i class="icofont-print"></i> Print the Ticket</b>
                                     </h4>
                                 </button>
                             </div>
                             <div class="col-md-4">
                                 <button class="btn btn-block btn-danger ticket-confirmation-button py-4">
-                                    <h4 class="mb-0"><b><i class="icofont-download"></i> Download</b></h4>
+                                    <h4 class="mb-0">
+                                        <b>
+                                            <a href="mpdf.php" class="text-decoration-none text-light"
+                                               download>
+                                                <i class="icofont-download"></i>
+                                                Download
+                                            </a>
+                                        </b>
+                                    </h4>
                                 </button>
                             </div>
                         </div>
@@ -685,6 +695,11 @@ if($result_three->num_rows > 0){
             }
         });
     }
+    
+    $("#e_ticket_print").click(function (){
+        w = window.open('mpdf.php');
+        w.print();
+    });
     
     $(document).ready(function (){
         getSearchedTicketData();
