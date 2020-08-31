@@ -205,6 +205,28 @@ function addPassengerInformation($conn){
     $value_str = trim($value_str, ',');
     $sql       .= $value_str;
     
+    /* Fetch Passenger Data */
+    $sql_two        = "select * from passengers where search_id = '$search_id'";
+    $result_two     = $conn->query($sql_two);
+    $passenger_info = array();
+    
+    if($result_two->num_rows > 0){
+        while($row = $result_two->fetch_assoc()){
+            array_push($passenger_info, $row);
+        }
+    }
+    
+    if(count($passenger_info) > 0){
+        foreach($passenger_info as $item){
+            if($item['image_url']){
+                $path = $item['image_url'];
+                if(file_exists($path)){
+                    unlink($path);
+                }
+            }
+        }
+    }
+    
     $drop_sql = "delete from passengers where search_id = '$search_id'";
     $conn->query($drop_sql);
     
