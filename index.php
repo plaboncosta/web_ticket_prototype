@@ -8,7 +8,7 @@ include 'config.php';
     <meta charset="UTF-8">
     <title>BANGLADESH RAILWAYS TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
-
+    
     <!--  Css Link  -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
@@ -24,7 +24,7 @@ include 'config.php';
 <body>
 <!-- Wrapper Defined -->
 <div id="wrapper">
-
+    
     <!--  Banner Area  -->
     <div class="banner-area">
         <div class="banner-overlay"></div>
@@ -101,7 +101,7 @@ include 'config.php';
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="d-block font-weight-bold" for="date">DATE</label>
-                                <input type="date" name="date" class="form-control banner-form-input"
+                                <input type="date" name="date" class="form-control banner-form-input restrict-date"
                                        id="date" required>
                                 <span class="banner-form-input-highlight-text">Depart Date</span>
                             </div>
@@ -164,7 +164,7 @@ include 'config.php';
             </div>
         </div>
     </div>
-
+    
     <!--  Home Page Body Area  -->
     <div class="home-page-body bg-white">
         <div class="ui-top position-relative">
@@ -173,10 +173,10 @@ include 'config.php';
         </div>
         <img src="./assets/images/slider.png" alt="">
     </div>
-
+    
     <!--  Footer Area  -->
     <?php include 'footer.php'; ?>
-
+    
     <!--  Login Modal  -->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -233,7 +233,7 @@ include 'config.php';
             </div>
         </div>
     </div>
-
+    
     <!--  Registration Modal  -->
     <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog"
          aria-labelledby="registrationModalLabel"
@@ -323,7 +323,7 @@ include 'config.php';
                                         <input type="checkbox" class="text-success" name="terms_of_service"
                                                id="terms_of_service" required>
                                         <label for="terms_of_service">I agree to the <span
-                                                    class="text-success">Terms of Service</span></label>
+                                            class="text-success">Terms of Service</span></label>
                                     </div>
                                     <div class="col-md-12 pt-3">
                                         <button type="submit"
@@ -346,7 +346,7 @@ include 'config.php';
             </div>
         </div>
     </div>
-
+    
     <!--  OTP Modal  -->
     <button class="btn btn-success" data-toggle="modal" data-target="#mobile-otp-modal">OTP</button>
     <div class="modal fade" id="mobile-otp-modal" tabindex="-1" role="dialog" aria-labelledby="mobileOtpModal"

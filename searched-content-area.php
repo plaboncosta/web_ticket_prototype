@@ -88,7 +88,7 @@
                             <div class="col-md-3 form-group">
                                 <label class="d-block font-weight-bold" for="date">DATE</label>
                                 <input type="date" name="date"
-                                       class="form-control searched-content-form-input"
+                                       class="form-control searched-content-form-input restrict-date"
                                        id="date">
                                 <span class="searched-content-form-input-highlight-text">Depart Date</span>
                             </div>
