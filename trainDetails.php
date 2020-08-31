@@ -99,7 +99,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <h3 class="text-danger text-amount mb-0">BDT 1,689.00</h3>
                         <b class=" ui-sub-small">For Adult</b>
                         <h3 class="text-danger text-amount mb-0">BDT 1,100.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
+                        <b class=" ui-sub-small">For Child</b>
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="first">
@@ -158,13 +158,13 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     <p class="title-margin font-weight-bold">Fare</p>
                 </div>
                 <div class="ui-details-card">
-                    <p class="ui-head-title">PANCHAGARH EXPRESS</p>
+                    <p class="ui-head-title">EKOTA EXPRESS</p>
                     <div>
-                        <h2 class="ml-4"><b>793</b></h2>
+                        <h2 class="ml-4"><b>705</b></h2>
                         <p class="text-secondary ml-4 ui-sub-small">Train No</p>
                     </div>
                     <div>
-                        <b>PANCHAGARH EXPRESS(793)</b>
+                        <b>EKOTA EXPRESS(705)</b>
                         <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
                                 $ticket_search['departure'] : 'Dhaka'; ?> to</p>
                         <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
@@ -172,7 +172,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     </div>
                     <div>
 
-                        <h6>12:10 AM</h6>
+                        <h6>10:10 AM</h6>
                         <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
                                 $ticket_search['departure'] : 'Dhaka'; ?></b></p>
                         <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
@@ -182,15 +182,15 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
-                        <h6>07:37 AM</h6>
+                        <h6>07:05 PM</h6>
                         <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
                                 $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
                     <div>
-                        <p class="mb-0 ui-smaller"><b>7 Hours</b></p>
-                        <p class="mb-0 ui-smaller"><b>27 Minutes</b></p>
+                        <p class="mb-0 ui-smaller"><b>8 Hours</b></p>
+                        <p class="mb-0 ui-smaller"><b>55 Minutes</b></p>
                         <p class="mb-0"><i class="ui-sub-small text-secondary">Today</i></p>
                         <p class="mb-0"><i class="ui-sub-small text-secondary">Journey Time</i></p>
                     </div>
@@ -198,7 +198,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <h3 class="text-danger text-amount mb-0">BDT 1,689.00</h3>
                         <b class=" ui-sub-small">For Adult</b>
                         <h3 class="text-danger text-amount mb-0">BDT 1,100.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
+                        <b class=" ui-sub-small">For Child</b>
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="second">
@@ -206,204 +206,6 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     </div>
                 </div>
                 <div class="ui-route" id="route2">
-                    <h4 class="text-danger ml-4"><b>Route</b></h4>
-                    <img src="./assets/images/trainDetRoute.png" class="mb-3" alt="">
-                    <h5><b class="ui-ticket-availability ml-4">Ticket Availability</b></h5>
-                    <div class="d-flex mt-3">
-                        <p class="title-margin ml-4 font-weight-bold">Class</p>
-                        <p class="title-margin font-weight-bold">Seat(Online)</p>
-                        <p class="title-margin font-weight-bold">Seat(Counter)</p>
-                        <p class="title-margin font-weight-bold">Fare(Adult)</p>
-                        <p class="title-margin font-weight-bold">Fare(Child)</p>
-                    </div>
-                    <div class="ui-availability-grid-container">
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-danger mb-0">AC_B</p>
-                            <p class="font-weight-bold text-danger mb-0">02</p>
-                            <p class="font-weight-bold text-danger mb-0">58</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 1,689.00</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 1,100.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-success">SNIGDHA</p>
-                            <p class="font-weight-bold text-success">06</p>
-                            <p class="font-weight-bold text-success">18</p>
-                            <p class="font-weight-bold text-success">BDT 889.00</p>
-                            <p class="font-weight-bold text-success">BDT 520.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-danger mb-0">S_CHAIR</p>
-                            <p class="font-weight-bold text-danger mb-0">12</p>
-                            <p class="font-weight-bold text-danger mb-0">58</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 485.00</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 310.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='ui-main-details'>
-                <div class="d-flex mt-3">
-                    <p class="title-margin ml-4 font-weight-bold">Train No</p>
-                    <p class="title-margin font-weight-bold">Train Name</p>
-                    <p class="title-margin font-weight-bold">Departure</p>
-                    <p class="title-margin font-weight-bold">Arrival</p>
-                    <p class="title-margin font-weight-bold">Duration</p>
-                    <p class="title-margin font-weight-bold">Fare</p>
-                </div>
-                <div class="ui-details-card">
-                    <p class="ui-head-title">PANCHAGARH EXPRESS</p>
-                    <div>
-                        <h2 class="ml-4"><b>793</b></h2>
-                        <p class="text-secondary ml-4 ui-sub-small">Train No</p>
-                    </div>
-                    <div>
-                        <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
-                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
-                    </div>
-                    <div>
-
-                        <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
-                                                                                   strtotime($ticket_search['date'])) :
-                        '' ?></b></p>
-                        <p class="mb-0"><b class="text-secondary">Departure @</b></p>
-                        <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
-                    </div>
-                    <div>
-                        <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
-                        <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
-                        <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
-                    </div>
-                    <div>
-                        <p class="mb-0 ui-smaller"><b>7 Hours</b></p>
-                        <p class="mb-0 ui-smaller"><b>27 Minutes</b></p>
-                        <p class="mb-0"><i class="ui-sub-small text-secondary">Today</i></p>
-                        <p class="mb-0"><i class="ui-sub-small text-secondary">Journey Time</i></p>
-                    </div>
-                    <div>
-                        <h3 class="text-danger text-amount mb-0">BDT 1,689.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
-                        <h3 class="text-danger text-amount mb-0">BDT 1,100.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
-                        <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
-                    </div>
-                    <div id="third">
-                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
-                    </div>
-                </div>
-                <div class="ui-route" id="route3">
-                    <h4 class="text-danger ml-4"><b>Route</b></h4>
-                    <img src="./assets/images/trainDetRoute.png" class="mb-3" alt="">
-                    <h5><b class="ui-ticket-availability ml-4">Ticket Availability</b></h5>
-                    <div class="d-flex mt-3">
-                        <p class="title-margin ml-4 font-weight-bold">Class</p>
-                        <p class="title-margin font-weight-bold">Seat(Online)</p>
-                        <p class="title-margin font-weight-bold">Seat(Counter)</p>
-                        <p class="title-margin font-weight-bold">Fare(Adult)</p>
-                        <p class="title-margin font-weight-bold">Fare(Child)</p>
-                    </div>
-                    <div class="ui-availability-grid-container">
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-danger mb-0">AC_B</p>
-                            <p class="font-weight-bold text-danger mb-0">02</p>
-                            <p class="font-weight-bold text-danger mb-0">58</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 1,689.00</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 1,100.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-success">SNIGDHA</p>
-                            <p class="font-weight-bold text-success">06</p>
-                            <p class="font-weight-bold text-success">18</p>
-                            <p class="font-weight-bold text-success">BDT 889.00</p>
-                            <p class="font-weight-bold text-success">BDT 520.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                        <div class="ui-availability-grid">
-                            <p class="font-weight-bold text-danger mb-0">S_CHAIR</p>
-                            <p class="font-weight-bold text-danger mb-0">12</p>
-                            <p class="font-weight-bold text-danger mb-0">58</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 485.00</p>
-                            <p class="font-weight-bold text-danger mb-0">BDT 310.00</p>
-                            <a href="ticket-selection.php" class="text-decoration-none">Book <i
-                                        class="icofont-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='ui-main-details'>
-                <div class="d-flex mt-3">
-                    <p class="title-margin ml-4 font-weight-bold">Train No</p>
-                    <p class="title-margin font-weight-bold">Train Name</p>
-                    <p class="title-margin font-weight-bold">Departure</p>
-                    <p class="title-margin font-weight-bold">Arrival</p>
-                    <p class="title-margin font-weight-bold">Duration</p>
-                    <p class="title-margin font-weight-bold">Fare</p>
-                </div>
-                <div class="ui-details-card">
-                    <p class="ui-head-title">PANCHAGARH EXPRESS</p>
-                    <div>
-                        <h2 class="ml-4"><b>793</b></h2>
-                        <p class="text-secondary ml-4 ui-sub-small">Train No</p>
-                    </div>
-                    <div>
-                        <b>PANCHAGARH EXPRESS(793)</b>
-                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?> to</p>
-                        <p class="mb-0 text-secondary gray-text"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></p>
-                    </div>
-                    <div>
-
-                        <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
-                                                                                   strtotime($ticket_search['date'])) :
-                        '' ?></b></p>
-                        <p class="mb-0"><b class="text-secondary">Departure @</b></p>
-                        <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
-                    </div>
-                    <div>
-                        <h6>07:37 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
-                        <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
-                        <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
-                    </div>
-                    <div>
-                        <p class="mb-0 ui-smaller"><b>7 Hours</b></p>
-                        <p class="mb-0 ui-smaller"><b>27 Minutes</b></p>
-                        <p class="mb-0"><i class="ui-sub-small text-secondary">Today</i></p>
-                        <p class="mb-0"><i class="ui-sub-small text-secondary">Journey Time</i></p>
-                    </div>
-                    <div>
-                        <h3 class="text-danger text-amount mb-0">BDT 1,689.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
-                        <h3 class="text-danger text-amount mb-0">BDT 1,100.00</h3>
-                        <b class=" ui-sub-small">For Adult</b>
-                        <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
-                    </div>
-                    <div id="fourth">
-                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
-                    </div>
-                </div>
-                <div class="ui-route" id="route4">
                     <h4 class="text-danger ml-4"><b>Route</b></h4>
                     <img src="./assets/images/trainDetRoute.png" class="mb-3" alt="">
                     <h5><b class="ui-ticket-availability ml-4">Ticket Availability</b></h5>

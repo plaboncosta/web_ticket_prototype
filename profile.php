@@ -301,7 +301,7 @@ if($result_three->num_rows > 0){
                                         </div>
                                         <div class="d-flex position-relative ui-locationTo justify-content-between">
                                             <div>
-                                                <p class="text-yellow"><b>DAKA</b></p>
+                                                <p class="text-yellow"><b>DA</b></p>
                                                 <p class="mb-0 ui-time">12:10 AM</p>
                                                 <p class="mb-0 ui-time"><?php echo !empty($ticket_search['date']) ?
                                                         date("d/m/Y",
