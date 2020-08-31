@@ -2,9 +2,9 @@
 include 'config.php';
 session_start();
 
-if(!$_SESSION["user_id"]) {
+if( !$_SESSION["user_id"]){
     $redirect_url = $base_url . '/index.php';
-    header('Location: '. $redirect_url);
+    header('Location: ' . $redirect_url);
 }
 
 // Create connection
@@ -305,8 +305,9 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 <div class="col-md-3">
                                     <label class="d-block font-weight-bold">&nbsp;</label>
                                     <input type="checkbox" name="infant[]" class="infant_class">
-                                    <label for="infant"><span class="d-inline-block pl-2"><strong>Infant</strong></label>
-                                <span>(Travelling with a child)</span></span>
+                                    <label for="infant"><span
+                                                class="d-inline-block pl-2"><strong>Infant</strong></label>
+                                    <span>(Travelling with a child)</span></span>
                                 </div>
                             </div>
                         </div>
@@ -348,6 +349,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 <script src="./assets/js/bootstrap.min.js"></script>
 <script src="./assets/js/custom.script.js"></script>
 <script>
+    let base = "<?php echo $base_url; ?>";
     let valOne         = document.getElementById('valOne');
     let valTwo         = document.getElementById('valTwo');
     let togSit         = document.getElementById('toggleSit');
@@ -391,7 +393,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
             } else{
                 redSit.style.background = 'darkred';
                 selectedSitTwo          = 'A1-01-L-32';
-                valTwo.innerHTML        = 'A1-01-L-32';
+                valTwo.innerHTML        = 'A1-01-U-32';
             }
         }
     });
@@ -457,11 +459,11 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
             data  : $("#passengerInfoForm").serialize(),
         }).done(function (response){
             let result = JSON.parse(response);
-             if (result.success){
-             window.location.href = 'payment.php';
-             } else{
+            if (result.success){
+                window.location.href = 'payment.php';
+            } else{
                 alert('Something went wrong');
-             }
+            }
         });
     }
 </script>
