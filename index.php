@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +37,19 @@ include 'config.php';
                         <li class="nav-item active">
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Register</a>
-                        </li>
+                        <?php if(isset($_SESSION['user_id'])){ ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);" onclick="logOutUser()">Log
+                                    out</a>
+                            </li>
+                        <?php } else{ ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Register</a>
+                            </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
