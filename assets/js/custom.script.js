@@ -1,3 +1,5 @@
+let base = "<?php echo $base_url; ?>";
+
 $("input[type='number']").keyup(function (){
     if ($(this).val() < 0){
         $(this).val('');
@@ -26,3 +28,7 @@ $(function (){
     let maxDate = year + '-' + month + '-' + day;
     $(".restrict-date").attr('min', maxDate);
 });
+
+function logOutUser() {
+
+}

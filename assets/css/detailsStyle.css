@@ -52,7 +52,8 @@
     }
 
 .ui-details .ui-details-card div {
-    height: 120px;
+    height: 100%;
+    margin-top: 65%;
     }
 
 
@@ -128,21 +129,21 @@
     text-align: center;
     }
 
-.ui-details .ui-filterBy header i{
+.ui-details .ui-filterBy header i {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
     }
 
-.ui-details .ui-filterBy .ui-filter-label{
+.ui-details .ui-filterBy .ui-filter-label {
     color: #027e5b;
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 5px;
     }
 
-.ui-details .ui-filterBy header{
+.ui-details .ui-filterBy header {
     justify-content: center;
     align-items: center;
     background: #027e5b;
@@ -153,7 +154,7 @@
     position: relative;
     }
 
-.ui-details .ui-filterBy{
+.ui-details .ui-filterBy {
     width: 100%;
     height: 420px;
     overflow: hidden;
@@ -169,3 +170,26 @@
 #route2,
 #route3,
 #route4 {display: none}
+
+.click-img-content {
+    width: 95px;
+    height: 100%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(-50%);
+    }
+
+
+@media only screen and (max-width: 1800px){
+    .click-img-content {
+        width: 130px;
+        height: 100%;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(-50%);
+        }
+    }

@@ -74,18 +74,20 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     <div>
 
                         <h6>12:10 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
-                                                                                   strtotime($ticket_search['date'])) :
-                        '' ?></b></p>
+                        <p class="mb-0"><b
+                                    class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                    $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ?
+                                    date("M j, Y",
+                                         strtotime($ticket_search['date'])) :
+                                    '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:37 AM</h6>
                         <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
+                                    $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -102,8 +104,14 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <b class=" ui-sub-small">For Child</b>
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
-                    <div id="first">
+                    <div id="first" class="position-relative mt-0 cursor-pointer">
                         <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
+                        <section class="click-img-content position-absolute">
+                            <p class="text-white mb-1"><b>Click here</b></p>
+                            <p class="text-white mb-1"><b>for Fare by</b></p>
+                            <p class="text-white mb-1"><b>Class &</b></p>
+                            <p class="text-white mb-1"><b>Availability</b></p>
+                        </section>
                     </div>
                 </div>
                 <div class="ui-route" id="route1">
@@ -173,18 +181,20 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                     <div>
 
                         <h6>10:10 AM</h6>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['departure']) ?
-                                $ticket_search['departure'] : 'Dhaka'; ?></b></p>
-                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ? date("M j, Y",
-                                                                                   strtotime($ticket_search['date'])) :
-                        '' ?></b></p>
+                        <p class="mb-0"><b
+                                    class="text-success"><?php echo !empty($ticket_search['departure']) ?
+                                    $ticket_search['departure'] : 'Dhaka'; ?></b></p>
+                        <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['date']) ?
+                                    date("M j, Y",
+                                         strtotime($ticket_search['date'])) :
+                                    '' ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Departure @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Dhaka Airport Station)</b></p>
                     </div>
                     <div>
                         <h6>07:05 PM</h6>
                         <p class="mb-0"><b class="text-success"><?php echo !empty($ticket_search['arrival']) ?
-                                $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
+                                    $ticket_search['arrival'] : 'Dinajpur'; ?></b></p>
                         <p class="mb-0"><b class="text-secondary">Arrival @</b></p>
                         <p class="mb-0"><b class="text-danger red-text">(Main Station)</b></p>
                     </div>
@@ -201,8 +211,14 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <b class=" ui-sub-small">For Child</b>
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
-                    <div id="second">
+                    <div id="second" class="position-relative mt-0 cursor-pointer">
                         <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
+                        <section class="click-img-content position-absolute">
+                            <p class="text-white mb-1"><b>Click here</b></p>
+                            <p class="text-white mb-1"><b>for Fare by</b></p>
+                            <p class="text-white mb-1"><b>Class &</b></p>
+                            <p class="text-white mb-1"><b>Availability</b></p>
+                        </section>
                     </div>
                 </div>
                 <div class="ui-route" id="route2">

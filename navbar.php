@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);">Log out</a>
+                <a class="nav-link" href="javascript:void(0);" onclick="logOutUser()">Log out</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileMenuLink"
