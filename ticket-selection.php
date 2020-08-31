@@ -38,10 +38,12 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
     <link rel="stylesheet" href="./assets/css/ticket-selection.css">
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/searched-content.css">
 </head>
 <body>
 <!-- Wrapper Defined -->
 <div id="wrapper">
+    <?php include 'navbar.php'; ?>
 
     <div class="p-4">
         <div class="row mx-0 px-0">

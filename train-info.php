@@ -1,4 +1,4 @@
-<div class="train-info bg-white">
+<div class="train-info bg-white shadowCustom">
     <h4 class="ui-header mb-5"><b>Train Info</b></h4>
     <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">

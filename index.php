@@ -109,7 +109,7 @@ include 'config.php';
                                 <label class="d-block font-weight-bold">&nbsp;</label>
                                 <button type="submit"
                                         class="btn btn-danger btn-block font-weight-bold text-decoration-none">
-                                    Trains
+                                    Find Trains
                                     <i class="icofont-search d-inline-block pl-1"></i>
                                 </button>
                                 <span class="banner-form-input-highlight-text">Click here for advanced

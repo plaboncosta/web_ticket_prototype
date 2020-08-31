@@ -35,6 +35,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
     <!--  Css Link  -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/detailsStyle.css">
     <link rel="stylesheet" href="./assets/css/searched-content.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
@@ -102,7 +103,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="first">
-                        <img src="./assets/images/click_here.png" alt="">
+                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
                     </div>
                 </div>
                 <div class="ui-route" id="route1">
@@ -201,7 +202,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="second">
-                        <img src="./assets/images/click_here.png" alt="">
+                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
                     </div>
                 </div>
                 <div class="ui-route" id="route2">
@@ -300,7 +301,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="third">
-                        <img src="./assets/images/click_here.png" alt="">
+                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
                     </div>
                 </div>
                 <div class="ui-route" id="route3">
@@ -399,7 +400,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                         <p class="mb-0 ui-sub-small"><b>Inclusive of all TAX</b></p>
                     </div>
                     <div id="fourth">
-                        <img src="./assets/images/click_here.png" alt="">
+                        <img src="./assets/images/click_here.png" class="cursor-pointer" alt="">
                     </div>
                 </div>
                 <div class="ui-route" id="route4">

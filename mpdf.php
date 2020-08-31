@@ -10,4 +10,4 @@ $template = ob_get_contents();
 ob_end_clean();
 
 $mpdf->WriteHTML($template);
-$mpdf->Output();
+$mpdf->Output('e-ticket.pdf', 'I');

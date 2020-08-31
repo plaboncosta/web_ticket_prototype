@@ -171,3 +171,20 @@ body {
     border: 1px solid #444;
     justify-content: center;
     }
+
+.shadowCustom {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    }
+
+.shadowCustomMid {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .2);
+    }
+
+.border-right-dashed {
+    border-right: 2px dashed #979797;
+    }
+
+
+.border-bottom-dashed {
+    border-bottom: 2px dashed #979797;
+    }

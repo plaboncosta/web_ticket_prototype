@@ -62,10 +62,12 @@ if($result_three->num_rows > 0){
     <link rel="stylesheet" href="./assets/css/payment.css">
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/searched-content.css">
 </head>
 <body>
 <!-- Wrapper Defined -->
 <div id="wrapper">
+    <?php include 'navbar.php'; ?>
 
     <div class="row mx-0 px-0 mb-5 ui-payment-container">
         <div class="col-md-12 pt-4">
@@ -79,7 +81,7 @@ if($result_three->num_rows > 0){
                 <h4 class="ui-header mb-5"><b>Passenger Details</b></h4>
                 <div>
                     <?php foreach($passenger_info as $key => $item){ ?>
-                        <div class="d-flex align-items-center <?php echo $key == 0 ? 'mb-5' : '' ?>">
+                        <div class="d-flex align-items-center <?php echo $key != (count($passenger_info) - 1) ? 'mb-3' : '' ?>">
                             <div class="col-md-8">
                                 <div class="d-flex justify-content-between">
                                     <div class="w-50 d-flex">
