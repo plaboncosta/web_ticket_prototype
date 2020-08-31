@@ -205,6 +205,9 @@ function addPassengerInformation($conn){
     $value_str = trim($value_str, ',');
     $sql       .= $value_str;
     
+    $drop_sql = "delete from passengers where search_id = '$search_id'";
+    $conn->query($drop_sql);
+    
     if($conn->query($sql) === true){
         $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 2 WHERE id = '$search_id'");
         
