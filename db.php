@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 session_start();
+date_default_timezone_set('Asia/Dhaka');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
