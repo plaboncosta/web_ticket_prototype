@@ -35,6 +35,9 @@ if(is_ajax()){
             case "passenger_file_upload":
                 savePassengerFile($conn);
                 break;
+            case "logout":
+                logOutUser();
+                break;
         }
     }
 }
@@ -139,7 +142,18 @@ function addUser($conn){
         $search_id           = $_SESSION["ticket_search_insert_id"];
         $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
         
-        $response = array(
+        $sql_two   = "select * from users where id = '$user_id';";
+        $result    = $conn->query($sql_two);
+        $user_info = '';
+        
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $user_info = $row;
+            }
+        }
+        
+        $_SESSION["user_info"] = $user_info;
+        $response              = array(
             'success' => true,
             'message' => 'Added successfully'
         );
@@ -161,6 +175,7 @@ function loginUser($conn){
             $_SESSION["user_info"] = $row;
             $user_id               = $row['id'];
             $search_id             = $_SESSION["ticket_search_insert_id"];
+            $_SESSION["user_id"]   = $user_id;
             $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
             
             $response = array(
@@ -419,6 +434,18 @@ function savePassengerFile($conn){
             echo json_encode($response);
         }
     }
+}
+
+function logOutUser(){
+    unset($_SESSION["ticket_search_insert_id"]);
+    unset($_SESSION["user_id"]);
+    unset($_SESSION["user_info"]);
+    
+    $response = array(
+        'success' => true,
+        'message' => 'Successfully Logged out'
+    );
+    echo json_encode($response);
 }
 
 $conn->close();

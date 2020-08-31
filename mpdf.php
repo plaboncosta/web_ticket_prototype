@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(!$_SESSION["user_id"]) {
+    $redirect_url = $base_url . '/index.php';
+    header('Location: '. $redirect_url);
+}
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $mpdf = new \Mpdf\Mpdf();

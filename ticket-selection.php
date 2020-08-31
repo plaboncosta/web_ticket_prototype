@@ -2,6 +2,11 @@
 include 'config.php';
 session_start();
 
+if(!$_SESSION["user_id"]) {
+    $redirect_url = $base_url . '/index.php';
+    header('Location: '. $redirect_url);
+}
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -343,7 +348,6 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 <script src="./assets/js/bootstrap.min.js"></script>
 <script src="./assets/js/custom.script.js"></script>
 <script>
-    let base           = "<?php echo $base_url; ?>";
     let valOne         = document.getElementById('valOne');
     let valTwo         = document.getElementById('valTwo');
     let togSit         = document.getElementById('toggleSit');
