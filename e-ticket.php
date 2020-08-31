@@ -48,6 +48,13 @@ if($result_three->num_rows > 0){
     }
 }
 
+if( !empty($ticket_search['date'])){
+    $search_date         = $ticket_search['date'];
+    $date                = date_create($search_date);
+    $printed_ticket_date = date_sub($date, date_interval_create_from_date_string("1 days"));
+    $printed_ticket_date = date_format($printed_ticket_date, "Y-m-d");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +94,8 @@ if($result_three->num_rows > 0){
         <tbody>
         <tr>
             <td>
-                <h1 style="margin-bottom: 0px;">793</h1>
+                <h2 style="margin-bottom: 0px;">793</h2>
+                <span>PANCHAGARH EXPRESS</span>
             </td>
             <td>
                 <span><?php echo !empty($ticket_search['departure']) ?
@@ -95,10 +103,10 @@ if($result_three->num_rows > 0){
                 <span><?php echo !empty($ticket_search['date']) ?
                         date("M j, Y",
                              strtotime($ticket_search['date'])) :
-                        'Sep 3, 2020' ?> 12:10 AM</span>
+                        '' ?> 12:10 AM</span>
             </td>
             <td>
-                <img style="height: 100px;" src="./assets/images/train-image.jpg" alt="">
+                <img style="height: 80px; width: 250px;" src="./assets/images/train-image.jpg" alt="">
             </td>
             <td style="padding-left: 50px;">
                 <span><?php echo !empty($ticket_search['arrival']) ?
@@ -106,12 +114,11 @@ if($result_three->num_rows > 0){
                 <span><?php echo !empty($ticket_search['date']) ?
                         date("M j, Y",
                              strtotime($ticket_search['date'])) :
-                        'Sep 3, 2020' ?> 12:10 AM</span>
+                        '' ?> 07:37 AM</span>
             </td>
         </tr>
         </tbody>
     </table>
-    <span style="margin-bottom: 0px;">PANCHAGARH EXPRESS</span>
 
     <div style="width: 100%; margin-top: 10px;">
         <table>
@@ -127,7 +134,11 @@ if($result_three->num_rows > 0){
                         <tbody>
                         <tr>
                             <td>Issue Date & Time</td>
-                            <td>Current Time</td>
+                            <td>
+                                <?php echo !empty($payment_details['createdAt']) ?
+                                    date("M j, Y H:i A",
+                                         strtotime($payment_details['createdAt'])) :
+                                    'Sep 3, 2020' ?></td>
                         </tr>
                         <tr>
                             <td>Issuer NID</td>
@@ -186,10 +197,10 @@ if($result_three->num_rows > 0){
 
     <div>
         <p style="margin-bottom: 0px; margin-top: 8px; font-size: 18px;">Ticket Printing Info</p>
-        <span>Last time for collecting printed ticket: <?php echo !empty($ticket_search['date']) ?
+        <span>Last time for collecting printed ticket: <?php echo !empty($printed_ticket_date) ?
                 date("M j, Y",
-                     strtotime($ticket_search['date'])) :
-                'Sep 3, 2020' ?> 11:40 PM</span><br>
+                     strtotime($printed_ticket_date)) :
+                '' ?> 11:40 PM</span><br>
         <span>Mobile Number: <?php echo !empty($user_info['phone_number']) ?
                 $user_info['phone_number'] : '' ?></span><br>
         <span>Pin Number: NSFLSH</span>
