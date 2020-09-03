@@ -1,13 +1,16 @@
 <?php
 include 'config.php';
 session_start();
+
+$string       = file_get_contents("./assets/json/station_list.json");
+$station_list = json_decode($string, true);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
 
     <!--  Css Link  -->
@@ -57,7 +60,6 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="./assets/images/language.webp" class="language-icon" alt="">
                                 ENG
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -69,7 +71,7 @@ session_start();
                 </div>
             </nav>
             <div class="banner-text">
-                <h3>BANGLADESH RAILWAYS</h3>
+                <h3>BANGLADESH RAILWAY</h3>
                 <p>Safety l Security l Punctuality</p>
             </div>
             <div class="banner-form">
@@ -86,11 +88,9 @@ session_start();
                                 <select name="departure" class="form-control banner-form-input" id="from"
                                         required>
                                     <option value="">Departure</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Khulna">Khuna</option>
+                                    <?php foreach($station_list as $item){ ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="banner-form-input-highlight-text">Starting Location</span>
                             </div>
@@ -99,11 +99,9 @@ session_start();
                                 <select name="arrival" class="form-control banner-form-input" id="to"
                                         required>
                                     <option value="">Arrival</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Khulna">Khuna</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Dhaka">Dhaka</option>
+                                    <?php foreach($station_list as $item){ ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="banner-form-input-highlight-text">Where to go</span>
                             </div>
@@ -321,8 +319,7 @@ session_start();
                                     <div class="col-md-6">
                                         <label class="d-block font-weight-bold"
                                                for="confirm_password">Confirm
-                                            Password
-                                            Address</label>
+                                            Password </label>
                                         <input type="password" class="form-control banner-form-input"
                                                name="confirm_password" minlength="6"
                                                id="confirm_password" placeholder="Retype Confirm Password"

@@ -34,7 +34,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
 
     <!--  Css Link  -->

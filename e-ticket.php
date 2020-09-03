@@ -66,7 +66,7 @@ if( !empty($ticket_search['date'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
     <style>
         * {

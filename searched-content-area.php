@@ -1,3 +1,8 @@
+<?php
+$string       = file_get_contents("./assets/json/station_list.json");
+$station_list = json_decode($string, true);
+?>
+
 <div class="searched-content-area">
     <div class="searched-content-overlay"></div>
     <div class="position-relative ui-body">
@@ -17,11 +22,9 @@
                                 <select name="departure" class="form-control searched-content-form-input"
                                         id="from">
                                     <option value="">Departure</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Khulna">Khuna</option>
+                                    <?php foreach($station_list as $item){ ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="searched-content-form-input-highlight-text">Starting Location</span>
                             </div>
@@ -30,11 +33,9 @@
                                 <select name="arrival" class="form-control searched-content-form-input"
                                         id="to">
                                     <option value="">Arrival</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Khulna">Khuna</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Dhaka">Dhaka</option>
+                                    <?php foreach($station_list as $item){ ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="searched-content-form-input-highlight-text">Where to go</span>
                             </div>
