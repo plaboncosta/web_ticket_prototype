@@ -105,16 +105,17 @@ function getSearchedTicketData($conn) {
 }
 
 function addUser($conn) {
-    $first_name       = $_POST['first_name'];
-    $last_name        = $_POST['last_name'];
-    $phone_number     = $_POST['phone_number'];
-    $confirm_phone    = $_POST['confirm_phone'];
-    $national_id      = $_POST['national_id'];
-    $email            = $_POST['email'];
-    $password         = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    $terms_of_service = $_POST['terms_of_service'] == 'on' ? 1 : 0;
-    $created_at       = (new DateTime())->format('Y-m-d H:i:s');
+    $first_name             = $_POST['first_name'];
+    $last_name              = $_POST['last_name'];
+    $phone_number           = $_POST['phone_number'];
+    $confirm_phone          = $_POST['confirm_phone'];
+    $national_id            = $_POST['national_id'];
+    $email                  = $_POST['email'];
+    $password               = $_POST['password'];
+    $confirm_password       = $_POST['confirm_password'];
+    $registration_from_menu = $_POST['registration_from_menu'];
+    $terms_of_service       = $_POST['terms_of_service'] == 'on' ? 1 : 0;
+    $created_at             = (new DateTime())->format('Y-m-d H:i:s');
     
     if ($phone_number != $confirm_phone) {
         $response = array(
@@ -139,8 +140,11 @@ function addUser($conn) {
     if ($conn->query($sql) === true) {
         $_SESSION["user_id"] = $conn->insert_id;
         $user_id             = $conn->insert_id;
-        $search_id           = $_SESSION["ticket_search_insert_id"];
-        $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
+        
+        if ($registration_from_menu != 'true') {
+            $search_id = $_SESSION["ticket_search_insert_id"];
+            $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
+        }
         
         $sql_two   = "select * from users where id = '$user_id';";
         $result    = $conn->query($sql_two);

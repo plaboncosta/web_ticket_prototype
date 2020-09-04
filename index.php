@@ -2,13 +2,15 @@
 include 'config.php';
 session_start();
 
+$string       = file_get_contents("./assets/json/station_list.json");
+$station_list = json_decode($string, true);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png"/>
     
     <!--  Css Link  -->
@@ -48,7 +50,7 @@ session_start();
                                 <a class="nav-link" href="javascript:void(0);" onclick="loginFromMenu()">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript:void(0);">Register</a>
+                                <a class="nav-link" href="javascript:void(0);" onclick="registrationFromMenu()">Register</a>
                             </li>
                         <?php } ?>
                         <li class="nav-item">
@@ -58,7 +60,6 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="./assets/images/language.webp" class="language-icon" alt="">
                                 ENG
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -70,7 +71,7 @@ session_start();
                 </div>
             </nav>
             <div class="banner-text">
-                <h3>BANGLADESH RAILWAYS</h3>
+                <h3>BANGLADESH RAILWAY</h3>
                 <p>Safety l Security l Punctuality</p>
             </div>
             <div class="banner-form">
@@ -87,11 +88,9 @@ session_start();
                                 <select name="departure" class="form-control banner-form-input" id="from"
                                         required>
                                     <option value="">Departure</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Khulna">Khuna</option>
+                                    <?php foreach ($station_list as $item) { ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="banner-form-input-highlight-text">Starting Location</span>
                             </div>
@@ -100,11 +99,9 @@ session_start();
                                 <select name="arrival" class="form-control banner-form-input" id="to"
                                         required>
                                     <option value="">Arrival</option>
-                                    <option value="Dinajpur">Dinajpur</option>
-                                    <option value="Khulna">Khuna</option>
-                                    <option value="Rajshahi">Rajshahi</option>
-                                    <option value="Chittagong">Chittagong</option>
-                                    <option value="Dhaka">Dhaka</option>
+                                    <?php foreach ($station_list as $item) { ?>
+                                        <option value="<?php echo $item['stn_name']; ?>"><?php echo $item['stn_name']; ?></option>
+                                    <?php } ?>
                                 </select>
                                 <span class="banner-form-input-highlight-text">Where to go</span>
                             </div>
@@ -263,6 +260,7 @@ session_start();
                             <form onsubmit="searchLoginModal(); return false;" id="registrationForm">
                                 <input type="hidden" name="id">
                                 <input type="hidden" name="action" value="registration-form">
+                                <input type="hidden" name="registration_from_menu" value="false">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label class="d-block font-weight-bold" for="first_name">First
@@ -323,8 +321,7 @@ session_start();
                                     <div class="col-md-6">
                                         <label class="d-block font-weight-bold"
                                                for="confirm_password">Confirm
-                                            Password
-                                            Address</label>
+                                            Password </label>
                                         <input type="password" class="form-control banner-form-input"
                                                name="confirm_password" minlength="6"
                                                id="confirm_password" placeholder="Retype Confirm Password"
@@ -397,7 +394,7 @@ session_start();
     </div>
 </div>
 
-<input type="hidden" name="user_id" value="<?php !empty($_SESSION['user_id']) ? $_SESSION['user_id'] : '' ?>">
+<input type="hidden" name="user_id" value="<?php echo !empty($_SESSION['user_id']) ? $_SESSION['user_id'] : '' ?>">
 
 <!-- Js Link -->
 <script src="./assets/js/jquery.min.js"></script>
@@ -478,6 +475,9 @@ session_start();
         }).done(function (response) {
             let result = JSON.parse(response);
             if (result.success) {
+                $("input[name='login_from_menu']").val(false);
+                $("input[name='registration_from_menu']").val(false);
+                
                 let user_id = $("input[name='user_id']").val();
                 if (user_id) {
                     window.location.href = 'trainDetails.php';
@@ -490,12 +490,23 @@ session_start();
     
     function confirmOTPNumber() {
         $("#mobile-otp-modal").modal('hide');
-        window.location.href = 'trainDetails.php';
+        
+        let registration_from_menu = $("input[name='registration_from_menu']").val();
+        if (registration_from_menu == 'true') {
+            window.location.reload();
+        } else {
+            window.location.href = 'trainDetails.php';
+        }
     }
     
     function loginFromMenu() {
         $("input[name='login_from_menu']").val(true);
         $("#login-modal").modal('show');
+    }
+    
+    function registrationFromMenu() {
+        $("input[name='registration_from_menu']").val(true);
+        $("#registration-modal").modal('show');
     }
 </script>
 </body>

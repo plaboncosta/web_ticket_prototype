@@ -7,6 +7,8 @@ if( !$_SESSION["user_id"]){
     header('Location: ' . $redirect_url);
 }
 
+$user_info = $_SESSION['user_info'];
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -34,7 +36,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
 
     <!--  Css Link  -->
@@ -122,7 +124,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                         <p>Lower Berth</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-red-symbol"></div>
+                                        <div class="seat-selection-symbol seat-selection-green-symbol"></div>
                                     </div>
                                 </div>
                                 <div class="d-flex row">
@@ -130,7 +132,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                         <p>Upper Berth</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-green-symbol"></div>
+                                        <div class="seat-selection-symbol seat-selection-red-symbol"></div>
                                     </div>
                                 </div>
                                 <div class="d-flex row">
@@ -277,7 +279,9 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                             <div class="row">
                                 <div class="col-md-3">
                                     <label class="d-block font-weight-bold" for="passenger_name">Name</label>
-                                    <input type="text" name="passenger_name[]"
+                                    <input type="text" name="passenger_name[]" value="<?php echo !empty($user_info['first_name']) ? $user_info['first_name'] :
+                                        '' ?> <?php echo !empty($user_info['last_name']) ? $user_info['last_name'] :
+                                        '' ?>"
                                            class="form-control banner-form-input"
                                            id="passenger_name" placeholder="Passenger Name" required>
                                     <span class="banner-form-input-highlight-text">Name should match with your
@@ -349,7 +353,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
 <script src="./assets/js/bootstrap.min.js"></script>
 <script src="./assets/js/custom.script.js"></script>
 <script>
-    let base = "<?php echo $base_url; ?>";
+    let base           = "<?php echo $base_url; ?>";
     let valOne         = document.getElementById('valOne');
     let valTwo         = document.getElementById('valTwo');
     let togSit         = document.getElementById('toggleSit');

@@ -2,9 +2,9 @@
 include 'config.php';
 session_start();
 
-if(!$_SESSION["user_id"]) {
+if( !$_SESSION["user_id"]){
     $redirect_url = $base_url . '/index.php';
-    header('Location: '. $redirect_url);
+    header('Location: ' . $redirect_url);
 }
 
 // Create connection
@@ -62,7 +62,7 @@ if($result_three->num_rows > 0){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BANGLADESH RAILWAYS TICKETS</title>
+    <title>BANGLADESH RAILWAY TICKETS</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
 
     <!--  Css Link  -->
@@ -454,9 +454,10 @@ if($result_three->num_rows > 0){
                         </div>
                         <div class="d-flex align-items-end h-100 mt-5">
                             <button class="mt-5 btn btn-secondary px-4 mr-4 py-2 h-100 rounded-lg">
-                                <h4 class="m-0 px-4 "><b>0</b></h4>
+                                <h4 class="m-0 px-4" id="bhuna_kichuri"><b>0</b></h4>
                             </button>
-                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg">
+                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg"
+                                    onclick="addMealCount('bhuna_kichuri')">
                                 <h4 class="m-0 px-4 "><b>Add</b></h4>
                             </button>
                         </div>
@@ -475,9 +476,10 @@ if($result_three->num_rows > 0){
                         </div>
                         <div class="d-flex align-items-end h-100 mt-5">
                             <button class="mt-5 btn btn-secondary px-4 mr-4 py-2 h-100 rounded-lg">
-                                <h4 class="m-0 px-4 "><b>0</b></h4>
+                                <h4 class="m-0 px-4" id="patla_kichuri"><b>0</b></h4>
                             </button>
-                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg">
+                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg"
+                                    onclick="addMealCount('patla_kichuri')">
                                 <h4 class="m-0 px-4 "><b>Add</b></h4>
                             </button>
                         </div>
@@ -496,9 +498,10 @@ if($result_three->num_rows > 0){
                         </div>
                         <div class="d-flex align-items-end h-100 mt-5">
                             <button class="mt-5 btn btn-secondary px-4 mr-4 py-2 h-100 rounded-lg">
-                                <h4 class="m-0 px-4 "><b>0</b></h4>
+                                <h4 class="m-0 px-4" id="morog_polao"><b>0</b></h4>
                             </button>
-                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg">
+                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg"
+                                    onclick="addMealCount('morog_polao')">
                                 <h4 class="m-0 px-4 "><b>Add</b></h4>
                             </button>
                         </div>
@@ -517,9 +520,10 @@ if($result_three->num_rows > 0){
                         </div>
                         <div class="d-flex align-items-end h-100 mt-5">
                             <button class="mt-5 btn btn-secondary px-4 mr-4 py-2 h-100 rounded-lg">
-                                <h4 class="m-0 px-4 "><b>0</b></h4>
+                                <h4 class="m-0 px-4" id="misti_doi"><b>0</b></h4>
                             </button>
-                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg">
+                            <button class="mt-5 btn btn-danger px-4 py-2 h-100 rounded-lg"
+                                    onclick="addMealCount('misti_doi')">
                                 <h4 class="m-0 px-4 "><b>Add</b></h4>
                             </button>
                         </div>
@@ -705,6 +709,11 @@ if($result_three->num_rows > 0){
         w = window.open('mpdf.php');
         w.print();
     });
+    
+    function addMealCount(id){
+        let value = $("#" + id).find('b').text();
+        $("#" + id).find('b').text(parseInt(value) + 1);
+    }
     
     $(document).ready(function (){
         getSearchedTicketData();
