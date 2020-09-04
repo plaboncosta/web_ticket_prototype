@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -8,8 +9,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>BANGLADESH RAILWAYS TICKETS</title>
-    <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png" />
-
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/britslogo.png"/>
+    
     <!--  Css Link  -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/icofont.min.css">
@@ -19,13 +20,13 @@ session_start();
     <style>
         .modal-lg {
             width: 650px !important;
-            }
+        }
     </style>
 </head>
 <body>
 <!-- Wrapper Defined -->
 <div id="wrapper">
-
+    
     <!--  Banner Area  -->
     <div class="banner-area">
         <div class="banner-overlay"></div>
@@ -37,17 +38,17 @@ session_start();
                         <li class="nav-item active">
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
-                        <?php if(isset($_SESSION['user_id'])){ ?>
+                        <?php if (isset($_SESSION['user_id'])) { ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="javascript:void(0);" onclick="logOutUser()">Log
                                     out</a>
                             </li>
-                        <?php } else{ ?>
+                        <?php } else { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="javascript:void(0);" onclick="loginFromMenu()">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Register</a>
+                                <a class="nav-link" href="javascript:void(0);">Register</a>
                             </li>
                         <?php } ?>
                         <li class="nav-item">
@@ -173,7 +174,7 @@ session_start();
             </div>
         </div>
     </div>
-
+    
     <!--  Home Page Body Area  -->
     <div class="home-page-body bg-white">
         <div class="ui-top position-relative">
@@ -182,10 +183,10 @@ session_start();
         </div>
         <img src="./assets/images/slider.png" alt="">
     </div>
-
+    
     <!--  Footer Area  -->
     <?php include 'footer.php'; ?>
-
+    
     <!--  Login Modal  -->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -202,6 +203,7 @@ session_start();
                         <div class="col-md-10 offset-md-1">
                             <form onsubmit="searchTicketDetails(); return false;" id="loginForm">
                                 <input type="hidden" name="action" value="login">
+                                <input type="hidden" name="login_from_menu" value="false">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label class="d-block font-weight-bold" for="mobile_number">Mobile
@@ -242,7 +244,7 @@ session_start();
             </div>
         </div>
     </div>
-
+    
     <!--  Registration Modal  -->
     <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog"
          aria-labelledby="registrationModalLabel"
@@ -355,9 +357,8 @@ session_start();
             </div>
         </div>
     </div>
-
+    
     <!--  OTP Modal  -->
-    <button class="btn btn-success" data-toggle="modal" data-target="#mobile-otp-modal">OTP</button>
     <div class="modal fade" id="mobile-otp-modal" tabindex="-1" role="dialog" aria-labelledby="mobileOtpModal"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -396,6 +397,8 @@ session_start();
     </div>
 </div>
 
+<input type="hidden" name="user_id" value="<?php !empty($_SESSION['user_id']) ? $_SESSION['user_id'] : '' ?>">
+
 <!-- Js Link -->
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
@@ -404,22 +407,22 @@ session_start();
 <script>
     let base = "<?php echo $base_url; ?>";
     
-    function searchTicketInfo(){
+    function searchTicketInfo() {
         addSearchedTicketInfo();
     }
     
-    function searchLoginModal(){
-        let phone_number     = $("#phone_number").val();
-        let confirm_phone    = $("#confirm_phone").val();
-        let reg_password     = $("#reg_password").val();
+    function searchLoginModal() {
+        let phone_number = $("#phone_number").val();
+        let confirm_phone = $("#confirm_phone").val();
+        let reg_password = $("#reg_password").val();
         let confirm_password = $("#confirm_password").val();
         
-        if (phone_number != confirm_phone){
+        if (phone_number != confirm_phone) {
             alert('Phone Number And Confirm Phone Number are not matched!');
             return false;
         }
         
-        if (reg_password != confirm_password){
+        if (reg_password != confirm_password) {
             alert('Password and Confirm Password are not matched!');
             return false;
         }
@@ -428,57 +431,71 @@ session_start();
             url   : base + '/db.php',
             method: 'POST',
             data  : $("#registrationForm").serialize(),
-        }).done(function (response){
+        }).done(function (response) {
             let result = JSON.parse(response);
-            if (result.success){
+            if (result.success) {
                 $("#registration-modal").modal('hide');
                 $("#mobile-otp-modal").modal('show');
             }
         });
     }
     
-    function searchTicketDetails(){
+    function searchTicketDetails() {
         $.ajax({
             url   : base + '/db.php',
             method: 'POST',
             data  : $("#loginForm").serialize(),
-        }).done(function (response){
+        }).done(function (response) {
             let result = JSON.parse(response);
-            if (result.success){
+            if (result.success) {
                 $("#login-modal").modal('hide');
-                window.location.href = 'trainDetails.php';
-            } else{
+                if (result.login_from_menu) {
+                    window.location.reload();
+                } else {
+                    window.location.href = 'trainDetails.php';
+                }
+            } else {
                 alert(result.message);
             }
         });
     }
     
-    function showRegistrationModal(){
+    function showRegistrationModal() {
         $("#login-modal").modal('hide');
         $("#registration-modal").modal('show');
     }
     
-    function showLoginModal(){
+    function showLoginModal() {
         $("#registration-modal").modal('hide');
         $("#login-modal").modal('show');
     }
     
-    function addSearchedTicketInfo(){
+    function addSearchedTicketInfo() {
         $.ajax({
             url   : base + '/db.php',
             method: 'POST',
             data  : $("#searchTicketForm").serialize(),
-        }).done(function (response){
+        }).done(function (response) {
             let result = JSON.parse(response);
-            if (result.success){
-                $("#login-modal").modal('show');
+            if (result.success) {
+                let user_id = $("input[name='user_id']").val();
+                if (user_id) {
+                    window.location.href = 'trainDetails.php';
+                } else {
+                    $("#login-modal").modal('show');
+                }
             }
         });
     }
     
-    function confirmOTPNumber(){
+    function confirmOTPNumber() {
         $("#mobile-otp-modal").modal('hide');
         window.location.href = 'trainDetails.php';
+    }
+    
+    function loginFromMenu() {
+        $("input[name='login_from_menu']").val(true);
+        $("#login-modal").modal('show');
     }
 </script>
 </body>

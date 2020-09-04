@@ -6,14 +6,14 @@ date_default_timezone_set('Asia/Dhaka');
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if($conn->connect_error){
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if(is_ajax()){
-    if(isset($_POST["action"]) && !empty($_POST["action"])){
+if (is_ajax()) {
+    if (isset($_POST["action"]) && !empty($_POST["action"])) {
         $action = $_POST['action'];
-        switch($action){
+        switch ($action) {
             case "search-ticket":
                 addSearchedTicketInfo($conn);
                 break;
@@ -42,12 +42,12 @@ if(is_ajax()){
     }
 }
 
-function is_ajax(){
+function is_ajax() {
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-           strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 }
 
-function addSearchedTicketInfo($conn){
+function addSearchedTicketInfo($conn) {
     $id           = $_POST['id'];
     $arrival      = $_POST['arrival'];
     $departure    = $_POST['departure'];
@@ -58,7 +58,7 @@ function addSearchedTicketInfo($conn){
     $created_at   = (new DateTime())->format('Y-m-d H:i:s');
     $updated_at   = (new DateTime())->format('Y-m-d H:i:s');
     
-    if($id){
+    if ($id) {
         $sql      = "UPDATE web_ticket_demo.ticket_search
                 SET departure = '$departure', arrival = '$arrival', date = '$date', class = '$class', passenger_no = '$passenger_no',
                     child_no  = '$child_no', updated_at = '$updated_at'
@@ -67,7 +67,7 @@ function addSearchedTicketInfo($conn){
             'success' => true,
             'message' => 'Updated successfully'
         );
-    } else{
+    } else {
         $sql      = "INSERT INTO ticket_search (departure, arrival, date, class, passenger_no, child_no,
                                            created_at) VALUES ('$departure', '$arrival', '$date', '$class',
                                            '$passenger_no', '$child_no', '$created_at')";
@@ -77,34 +77,34 @@ function addSearchedTicketInfo($conn){
         );
     }
     
-    if($conn->query($sql) === true){
-        if($id){
+    if ($conn->query($sql) === true) {
+        if ($id) {
             $_SESSION["ticket_search_insert_id"] = $id;
-        } else{
+        } else {
             $_SESSION["ticket_search_insert_id"] = $conn->insert_id;
         }
         
         echo json_encode($response);
-    } else{
+    } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-function getSearchedTicketData($conn){
+function getSearchedTicketData($conn) {
     $id     = $_POST['id'];
     $sql    = "select * from ticket_search where id = '$id';";
     $result = $conn->query($sql);
     
-    if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             echo json_encode($row);
         }
-    } else{
+    } else {
         echo json_encode('');
     }
 }
 
-function addUser($conn){
+function addUser($conn) {
     $first_name       = $_POST['first_name'];
     $last_name        = $_POST['last_name'];
     $phone_number     = $_POST['phone_number'];
@@ -116,7 +116,7 @@ function addUser($conn){
     $terms_of_service = $_POST['terms_of_service'] == 'on' ? 1 : 0;
     $created_at       = (new DateTime())->format('Y-m-d H:i:s');
     
-    if($phone_number != $confirm_phone){
+    if ($phone_number != $confirm_phone) {
         $response = array(
             'success' => false,
             'message' => 'Phone Number and Confirm Phone Number not matched!'
@@ -124,7 +124,7 @@ function addUser($conn){
         echo json_encode($response);
     }
     
-    if($password != $confirm_password){
+    if ($password != $confirm_password) {
         $response = array(
             'success' => false,
             'message' => 'Password and Confirm Password not matched!'
@@ -136,7 +136,7 @@ function addUser($conn){
                                    terms_of_service, created_at)
             VALUES ('$first_name', '$last_name', '$email', '$national_id', '$password', '$phone_number', $terms_of_service, '$created_at');";
     
-    if($conn->query($sql) === true){
+    if ($conn->query($sql) === true) {
         $_SESSION["user_id"] = $conn->insert_id;
         $user_id             = $conn->insert_id;
         $search_id           = $_SESSION["ticket_search_insert_id"];
@@ -146,8 +146,8 @@ function addUser($conn){
         $result    = $conn->query($sql_two);
         $user_info = '';
         
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $user_info = $row;
             }
         }
@@ -159,33 +159,46 @@ function addUser($conn){
         );
         
         echo json_encode($response);
-    } else{
+    } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-function loginUser($conn){
-    $mobile_number = $_POST['mobile_number'];
-    $password      = $_POST['password'];
-    $sql           = "select * from users where phone_number = '$mobile_number' and password = '$password';";
-    $result        = $conn->query($sql);
+function loginUser($conn) {
+    $mobile_number   = $_POST['mobile_number'];
+    $password        = $_POST['password'];
+    $login_from_menu = $_POST['login_from_menu'];
+    $sql             = "select * from users where phone_number = '$mobile_number' and password = '$password';";
+    $result          = $conn->query($sql);
     
-    if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             $_SESSION["user_info"] = $row;
             $user_id               = $row['id'];
-            $search_id             = $_SESSION["ticket_search_insert_id"];
             $_SESSION["user_id"]   = $user_id;
-            $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
             
-            $response = array(
-                'success' => true,
-                'message' => 'User exists',
-                'data'    => $row
-            );
+            if ($login_from_menu == 'true') {
+                $response = array(
+                    'success'         => true,
+                    'login_from_menu' => true,
+                    'message'         => 'User exists',
+                    'data'            => $row
+                );
+            } else {
+                $search_id = $_SESSION["ticket_search_insert_id"];
+                $conn->query("UPDATE web_ticket_demo.ticket_search SET search_by = '$user_id' WHERE id = '$search_id'");
+                
+                $response = array(
+                    'success'         => true,
+                    'login_from_menu' => false,
+                    'message'         => 'User exists',
+                    'data'            => $row
+                );
+            }
+            
             echo json_encode($response);
         }
-    } else{
+    } else {
         $response = array(
             'success' => false,
             'message' => 'Phone Number or Password is incorrect!'
@@ -194,7 +207,7 @@ function loginUser($conn){
     }
 }
 
-function addPassengerInformation($conn){
+function addPassengerInformation($conn) {
     $passenger_name = $_POST['passenger_name'];
     $gender         = $_POST['gender'];
     $age            = $_POST['age'];
@@ -207,11 +220,11 @@ function addPassengerInformation($conn){
                 `is_infant`, `createdAt`, `updatedAt`) VALUES ";
     $value_str = "";
     
-    if(count($passenger_name) > 0){
-        foreach($passenger_name as $key => $item){
+    if (count($passenger_name) > 0) {
+        foreach ($passenger_name as $key => $item) {
             $str =
                 "('$search_id', '$item', '$age[$key]', '$nationality', '$gender[$key]', '$is_infant[$key]', '$created_at', null)";
-            if($key < count($passenger_name)){
+            if ($key < count($passenger_name)) {
                 $str = $str . ',';
             }
             $value_str .= $str;
@@ -226,17 +239,17 @@ function addPassengerInformation($conn){
     $result_two     = $conn->query($sql_two);
     $passenger_info = array();
     
-    if($result_two->num_rows > 0){
-        while($row = $result_two->fetch_assoc()){
+    if ($result_two->num_rows > 0) {
+        while ($row = $result_two->fetch_assoc()) {
             array_push($passenger_info, $row);
         }
     }
     
-    if(count($passenger_info) > 0){
-        foreach($passenger_info as $item){
-            if($item['image_url']){
+    if (count($passenger_info) > 0) {
+        foreach ($passenger_info as $item) {
+            if ($item['image_url']) {
                 $path = $item['image_url'];
-                if(file_exists($path)){
+                if (file_exists($path)) {
                     unlink($path);
                 }
             }
@@ -246,7 +259,7 @@ function addPassengerInformation($conn){
     $drop_sql = "delete from passengers where search_id = '$search_id'";
     $conn->query($drop_sql);
     
-    if($conn->query($sql) === true){
+    if ($conn->query($sql) === true) {
         $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 2 WHERE id = '$search_id'");
         
         $response = array(
@@ -255,12 +268,12 @@ function addPassengerInformation($conn){
         );
         
         echo json_encode($response);
-    } else{
+    } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-function addPaymentInformation($conn){
+function addPaymentInformation($conn) {
     $search_id      = $_SESSION["ticket_search_insert_id"];
     $payment_amount = '1,689.00';
     $payment_option = $_POST['payment_option'];
@@ -270,7 +283,7 @@ function addPaymentInformation($conn){
                                       createdAt, updatedAt)
             VALUES ($search_id, '$payment_amount', '$payment_option', null, '$created_at', null)";
     
-    if($conn->query($sql) === true){
+    if ($conn->query($sql) === true) {
         $conn->query("UPDATE web_ticket_demo.ticket_search SET status = 3 WHERE id = '$search_id'");
         
         /* Fetch Search Ticket Data */
@@ -278,8 +291,8 @@ function addPaymentInformation($conn){
         $result        = $conn->query($sql);
         $ticket_search = '';
         
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $ticket_search = $row;
             }
         }
@@ -289,8 +302,8 @@ function addPaymentInformation($conn){
         $result_two     = $conn->query($sql_two);
         $passenger_info = array();
         
-        if($result_two->num_rows > 0){
-            while($row = $result_two->fetch_assoc()){
+        if ($result_two->num_rows > 0) {
+            while ($row = $result_two->fetch_assoc()) {
                 array_push($passenger_info, $row);
             }
         }
@@ -300,33 +313,33 @@ function addPaymentInformation($conn){
         $result_three    = $conn->query($sql_three);
         $payment_details = '';
         
-        if($result_three->num_rows > 0){
-            while($row = $result_three->fetch_assoc()){
+        if ($result_three->num_rows > 0) {
+            while ($row = $result_three->fetch_assoc()) {
                 $payment_details = $row;
             }
         }
         
         echo getTicketContent($ticket_search, $passenger_info, $payment_details);
-    } else{
+    } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-function getTicketContent($ticket_search, $passenger_info, $payment_details){
+function getTicketContent($ticket_search, $passenger_info, $payment_details) {
     $passenger_str = '';
-    foreach($passenger_info as $key => $item){
+    foreach ($passenger_info as $key => $item) {
         $passenger_str .= '<p class="mb-2">' . $item['name'] . ', ' . $item['age'] . ', ' .
-                          ($item['gender'] ==
-                           'Male' ? 'M' : 'F') . '</p>';
+            ($item['gender'] ==
+            'Male' ? 'M' : 'F') . '</p>';
     }
     
     $total_passenger = ($ticket_search['passenger_no'] ? $ticket_search['passenger_no'] : 0) +
-                       ($ticket_search['child_no'] ? $ticket_search['child_no'] : 0);
+        ($ticket_search['child_no'] ? $ticket_search['child_no'] : 0);
     
     $payment_str = '';
-    if($payment_details['payment_option'] == 'bKash'){
+    if ($payment_details['payment_option'] == 'bKash') {
         $payment_str .= '<p class="text-right mb-0">MFS - ' . $payment_details['payment_option'];
-    } else{
+    } else {
         $payment_str .= '<p class="text-right mb-0">Credit Card - VISA</p>';
     }
     
@@ -351,7 +364,7 @@ function getTicketContent($ticket_search, $passenger_info, $payment_details){
                                                             <p class="mb-0 ui-time">12:10 AM</p>
                                                             <p class="mb-0 ui-time">
                                                             ' .
-           date("d/m/Y", strtotime($ticket_search['date'])) . '
+        date("d/m/Y", strtotime($ticket_search['date'])) . '
                                                          </p>
                                                         </div>
                                                         <div>
@@ -359,7 +372,7 @@ function getTicketContent($ticket_search, $passenger_info, $payment_details){
                                                             <p class="mb-0 text-right ui-time">12:10 AM</p>
                                                             <p class="mb-0 text-right ui-time">
                                                             ' .
-           date("d/m/Y", strtotime($ticket_search['date'])) . '
+        date("d/m/Y", strtotime($ticket_search['date'])) . '
                                                            </p>
                                                         </div>
                                                     </div>
@@ -408,17 +421,17 @@ function getTicketContent($ticket_search, $passenger_info, $payment_details){
     ';
 }
 
-function savePassengerFile($conn){
-    if( !empty($_FILES['image_url'])){
+function savePassengerFile($conn) {
+    if (!empty($_FILES['image_url'])) {
         $path = "assets/uploads/";
         $path = $path . basename($_FILES['image_url']['name']);
         $id   = $_POST['id'];
         
-        if( !file_exists('./assets/uploads/')){
+        if (!file_exists('./assets/uploads/')) {
             mkdir("./assets/uploads", 0777);
         }
         
-        if(move_uploaded_file($_FILES['image_url']['tmp_name'], $path)){
+        if (move_uploaded_file($_FILES['image_url']['tmp_name'], $path)) {
             $conn->query("UPDATE web_ticket_demo.passengers SET image_url = '$path' WHERE id = '$id'");
             $response = array(
                 'success' => true,
@@ -426,7 +439,7 @@ function savePassengerFile($conn){
                 'path'    => $path
             );
             echo json_encode($response);
-        } else{
+        } else {
             $response = array(
                 'success' => false,
                 'message' => 'Something went wrong!'
@@ -436,7 +449,7 @@ function savePassengerFile($conn){
     }
 }
 
-function logOutUser(){
+function logOutUser() {
     unset($_SESSION["ticket_search_insert_id"]);
     unset($_SESSION["user_id"]);
     unset($_SESSION["user_info"]);
