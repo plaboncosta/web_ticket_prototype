@@ -93,8 +93,30 @@ if( !empty($ticket_search['date'])){
     </style>
 </head>
 <body>
-<img src="./assets/images/e-ticket-top.jpg" alt="">
 <div id="wrapper">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <img style="width: 95px; height: 100px;" src="./assets/images/railway-ticket-logo.jpg" alt="">
+            </td>
+            <td style="width: 300px; padding-left: 15px;">
+                <p style="font-size: 35px;">BANGLADESH RAILWAY</p>
+            </td>
+            <td style="padding-left: 80px; margin-top: 0px; padding-top: 0px;">
+                <img src="./assets/images/e-ticket-barcode-no.gif" alt="" style="height: 50px; width: 185px;">
+                <p>E-Ticket No: 1763589970</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <h4>Validity of this E-Ticket is subject to presentation of Photo Identity Card of the Passenger</h4>
+    
+    <div style="margin-bottom: 10px;">
+        <img src="./assets/images/avoid-rushing.jpg" alt="">
+    </div>
+    
     <table>
         <tbody>
         <tr>
@@ -208,7 +230,7 @@ if( !empty($ticket_search['date'])){
                 '' ?> 11:40 PM</span><br>
         <span>Mobile Number: <?php echo !empty($user_info['phone_number']) ?
                 $user_info['phone_number'] : '' ?></span><br>
-        <span>Pin Number: NSFLSH</span>
+        <span>Pin Number: 42GUs4N</span>
     </div>
 
     <div>
@@ -236,8 +258,12 @@ if( !empty($ticket_search['date'])){
             </tbody>
         </table>
     </div>
+    
+    <div style="border-bottom: 1px solid #9E9E9E; padding-bottom: 5px; padding-top: 5px;">
+        <span>Advertisement starts from below: </span>
+    </div>
 
-    <div style="margin-top: 20px;">
+    <div style="margin-top: 15px;">
         <img style="width: 100%; height: 120px;" src="./assets/images/e-ticket-advertise.jpg" alt="">
     </div>
 </div>
