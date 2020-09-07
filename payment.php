@@ -778,6 +778,7 @@ if($result_three->num_rows > 0){
 <!-- Js Link -->
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/custom.script.js"></script>
 <script>
     let base = "<?php echo $base_url; ?>";
     

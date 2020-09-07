@@ -277,18 +277,18 @@ QRcode::png($text, $file, 'L', 10, 2);
         <tr>
             <td style="width: 70%">
                 <div>
-                    <p style="margin-bottom: 0px; margin-top: 8px; font-size: 18px;">Ticket Printing Info</p>
-                    <span>Last time for collecting printed ticket: <?php echo !empty($printed_ticket_date) ?
+                    <p style="margin-bottom: 0px; margin-top: 8px; font-size: 15px;">Ticket Printing Info</p>
+                    <span style="font-size: 13px;">Last time for collecting printed ticket: <?php echo !empty($printed_ticket_date) ?
                             date("M j, Y",
                                  strtotime($printed_ticket_date)) :
                             '' ?> 11:40 PM</span><br>
-                    <span>Mobile Number: <?php echo !empty($user_info['phone_number']) ?
+                    <span style="font-size: 13px;">Mobile Number: <?php echo !empty($user_info['phone_number']) ?
                             $user_info['phone_number'] : '' ?></span><br>
-                    <span>Pin Number: 42GUs4N</span>
+                    <span style="font-size: 13px;">Pin Number: 42GUs4N</span>
                 </div>
                 <br>
                 <div>
-                    <p style="margin-bottom: 0px; margin-top: 8px; font-size: 18px;">Passenger Details</p>
+                    <p style="margin-bottom: 0px; margin-top: 8px; font-size: 15px;">Passenger Details</p>
                     <table>
                         <tbody>
                         <tr>
@@ -299,12 +299,12 @@ QRcode::png($text, $file, 'L', 10, 2);
                                          alt="">
                                 </td>
                                 <td style="padding-left: 10px; padding-right: 10px;">
-                                    <p style="margin-bottom: 0px; font-size: 18px;"><?php echo !empty($item['name']) ?
+                                    <p style="margin-bottom: 0px; font-size: 15px;"><?php echo !empty($item['name']) ?
                                             $item['name'] : ''; ?></p>
-                                    <span><?php echo !empty($item['age']) ?
+                                    <span style="font-size: 12px;"><?php echo !empty($item['age']) ?
                                             $item['age'] :
                                             ''; ?> Years</span><br>
-                                    <span><?php echo !empty($item['gender']) ?
+                                    <span style="font-size: 12px;"><?php echo !empty($item['gender']) ?
                                             $item['gender'] : ''; ?></span>
                                 </td>
                             <?php } ?>
@@ -316,12 +316,12 @@ QRcode::png($text, $file, 'L', 10, 2);
             <td style="width: 30%; height: 150px; border: 1px solid #9E9E9E;">
                 <div>
                     <ul>
-                        <li>Collect Ticket Before 30 Minutes</li>
-                        <li>Seat Before 10 Minutes</li>
-                        <li>Avoid Rushing</li>
-                        <li>Book a meal from dashboard</li>
-                        <li>Raise any type of complaint from dashboard</li>
-                        <li>You can buy SMS pack from your dashboard</li>
+                        <li style="font-size: 13px;">Collect Ticket Before 30 Minutes</li>
+                        <li style="font-size: 13px;">Seat Before 10 Minutes</li>
+                        <li style="font-size: 13px;">Avoid Rushing</li>
+                        <li style="font-size: 13px;">Book a meal from dashboard</li>
+                        <li style="font-size: 13px;">Raise any type of complaint from dashboard</li>
+                        <li style="font-size: 13px;">You can buy SMS pack from your dashboard</li>
                     </ul>
                 </div>
             </td>
@@ -330,7 +330,7 @@ QRcode::png($text, $file, 'L', 10, 2);
     </table>
 
     <div style="border-bottom: 1px solid #9E9E9E; padding-bottom: 5px; padding-top: 5px;">
-        <span>Advertisement starts from below: </span>
+        <span style="font-size: 13px;">Advertisement starts from below: </span>
     </div>
 
     <div style="margin-top: 15px;">

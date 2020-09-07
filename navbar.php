@@ -20,7 +20,6 @@
                 <a class="nav-link dropdown-toggle" href="#" id="profileMenuLink"
                    role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="./assets/images/language.webp" class="language-icon" alt="">
                     ENG
                 </a>
                 <div class="dropdown-menu" aria-labelledby="profileMenuLink">

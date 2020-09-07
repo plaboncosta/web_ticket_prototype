@@ -1,13 +1,15 @@
-let base_url      = window.location.origin;
-let pathArray     = window.location.pathname.split('/');
-let filteredArray = pathArray.filter(function (item){
-    return item !== "";
-});
-
-let directoryArray = filteredArray.splice(0, filteredArray.length - 1);
-directoryArray.forEach(function (item){
-    base_url += '/' + item;
-});
+/*let base_url      = window.location.origin;
+ let pathArray     = window.location.pathname.split('/');
+ let filteredArray = pathArray.filter(function (item){
+ return item !== "";
+ });
+ 
+ let directoryArray = filteredArray.splice(0, filteredArray.length - 1);
+ directoryArray.forEach(function (item){
+ base_url += '/' + item;
+ });
+ */
+let base_url = $("#base_url").val();
 
 $("input[type='number']").keyup(function (){
     if ($(this).val() < 0){
@@ -23,7 +25,6 @@ $("input[type='number']").change(function (){
 
 $(function (){
     let dtToday = new Date();
-    
     let month = dtToday.getMonth() + 1;
     let day   = dtToday.getDate();
     let year  = dtToday.getFullYear();
