@@ -90,7 +90,6 @@
     background-color: #F4F5F9;
     border-radius: 8px;
     padding: 30px;
-    height: 50%;
     }
 
 .seat-selection-info h4, .seat-selection-info p {
@@ -231,4 +230,8 @@
     }
 
 @media only screen and (max-width: 1400px){
+    }
+
+.coach-legend-area {
+    padding: 20px;
     }

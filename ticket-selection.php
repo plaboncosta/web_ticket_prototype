@@ -117,31 +117,43 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 <p>From Seat: 25</p>
                                 <p>To Seat: 49</p>
                             </div>
-                            <div class="mt-3 seat-selection-info">
+                            <div class="mt-3 seat-selection-info coach-legend-area">
                                 <h4>Coach Legend</h4>
                                 <div class="mt-4 d-flex row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <p>Lower Berth</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-green-symbol"></div>
-                                    </div>
-                                </div>
-                                <div class="d-flex row">
-                                    <div class="col-md-7">
-                                        <p>Upper Berth</p>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="seat-selection-symbol seat-selection-red-symbol"></div>
                                     </div>
+                                    <div class="col-md-2"></div>
                                 </div>
                                 <div class="d-flex row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
+                                        <p>Upper Berth</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="seat-selection-symbol seat-selection-green-symbol"></div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="d-flex row">
+                                    <div class="col-md-8">
                                         <p>Booked Seat</p>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="seat-selection-symbol seat-selection-black-symbol"></div>
                                     </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="d-flex row">
+                                    <div class="col-md-8">
+                                        <p>Selected Seat</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="seat-selection-symbol bg-danger"></div>
+                                    </div>
+                                    <div class="col-md-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -188,8 +200,8 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                             </div>
                                             <div class="ui-sits">
                                                 <div class="d-flex flex-column align-items-center">
-                                                    <div class="ui-singleSit bg-green">L</div>
-                                                    <div class="ui-singleSit bg-red">U</div>
+                                                    <div class="ui-singleSit bg-red">L</div>
+                                                    <div class="ui-singleSit bg-green">U</div>
                                                     <p class="font-weight-bold">D</p>
                                                 </div>
                                                 <div class="d-flex flex-column align-items-center">
@@ -279,9 +291,12 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                             <div class="row">
                                 <div class="col-md-3">
                                     <label class="d-block font-weight-bold" for="passenger_name">Name</label>
-                                    <input type="text" name="passenger_name[]" value="<?php echo !empty($user_info['first_name']) ? $user_info['first_name'] :
-                                        '' ?> <?php echo !empty($user_info['last_name']) ? $user_info['last_name'] :
-                                        '' ?>"
+                                    <input type="text" name="passenger_name[]"
+                                           value="<?php echo !empty($user_info['first_name']) ?
+                                               $user_info['first_name'] :
+                                               '' ?> <?php echo !empty($user_info['last_name']) ?
+                                               $user_info['last_name'] :
+                                               '' ?>"
                                            class="form-control banner-form-input"
                                            id="passenger_name" placeholder="Passenger Name" required>
                                     <span class="banner-form-input-highlight-text">Name should match with your
@@ -378,12 +393,12 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
         if (togSit.style.background === "darkgreen"){
             if (greenSit.style.background === 'darkred'){
                 greenSit.style.background = '#34da90';
-                selectedSitOne            = null;
-                valOne.innerHTML          = null;
+                selectedSitTwo            = null;
+                valTwo.innerHTML          = null;
             } else{
                 greenSit.style.background = 'darkred';
-                selectedSitOne            = 'A1-01-L-31';
-                valOne.innerHTML          = 'A1-01-L-31';
+                selectedSitTwo            = 'A1-01-U-32';
+                valTwo.innerHTML          = 'A1-01-U-32';
             }
         }
     });
@@ -392,12 +407,12 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
         if (togSit.style.background === "darkgreen"){
             if (redSit.style.background === 'darkred'){
                 redSit.style.background = '#fe838f';
-                selectedSitTwo          = null;
-                valTwo.innerHTML        = null;
+                selectedSitOne          = null;
+                valOne.innerHTML        = null;
             } else{
                 redSit.style.background = 'darkred';
-                selectedSitTwo          = 'A1-01-L-32';
-                valTwo.innerHTML        = 'A1-01-U-32';
+                selectedSitOne          = 'A1-01-L-31';
+                valOne.innerHTML        = 'A1-01-L-31';
             }
         }
     });
