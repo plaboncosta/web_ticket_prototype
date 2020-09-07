@@ -324,7 +324,7 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
         let child_no     = $("select[name='child_no']").val();
     
         if (parseInt(passenger_no) + parseInt(child_no) > 4){
-            alert('You can select maximum 4 passengers(including child)!');
+            alert('You can not select greater than 4 passengers(including child)!');
             return false;
         }
     
