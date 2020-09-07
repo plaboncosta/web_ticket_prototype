@@ -200,8 +200,8 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                             </div>
                                             <div class="ui-sits">
                                                 <div class="d-flex flex-column align-items-center">
-                                                    <div class="ui-singleSit bg-red">L</div>
-                                                    <div class="ui-singleSit bg-green">U</div>
+                                                    <div class="ui-singleSit bg-red cursor-pointer">L</div>
+                                                    <div class="ui-singleSit bg-green cursor-pointer">U</div>
                                                     <p class="font-weight-bold">D</p>
                                                 </div>
                                                 <div class="d-flex flex-column align-items-center">
