@@ -117,45 +117,6 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                                 <p>From Seat: 25</p>
                                 <p>To Seat: 49</p>
                             </div>
-                            <div class="mt-3 seat-selection-info coach-legend-area">
-                                <h4>Coach Legend</h4>
-                                <div class="mt-4 d-flex row">
-                                    <div class="col-md-8">
-                                        <p>Lower Berth</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-red-symbol"></div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <div class="d-flex row">
-                                    <div class="col-md-8">
-                                        <p>Upper Berth</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-green-symbol"></div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <div class="d-flex row">
-                                    <div class="col-md-8">
-                                        <p>Booked Seat</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="seat-selection-symbol seat-selection-black-symbol"></div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <div class="d-flex row">
-                                    <div class="col-md-8">
-                                        <p>Selected Seat</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="seat-selection-symbol bg-danger"></div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="d-flex">
@@ -268,10 +229,55 @@ $total_passenger = (!empty($ticket_search['passenger_no']) ? $ticket_search['pas
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="d-flex flex-column justify-content-center h-100 ml-2">
-                                <p><b>Selected Seats</b></p>
-                                <p class="text-danger"><b>One: <span id="valOne"></span></b></p>
-                                <p class="text-danger"><b>Two: <span id="valTwo"></span></b></p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3 seat-selection-info coach-legend-area">
+                                        <h4>Coach Legend</h4>
+                                        <div class="mt-4 d-flex row">
+                                            <div class="col-md-8">
+                                                <p>Lower Berth</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="seat-selection-symbol seat-selection-red-symbol"></div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="col-md-8">
+                                                <p>Upper Berth</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="seat-selection-symbol seat-selection-green-symbol"></div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="col-md-8">
+                                                <p>Booked Seat</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="seat-selection-symbol seat-selection-black-symbol"></div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                        <div class="d-flex row">
+                                            <div class="col-md-8">
+                                                <p>Selected Seat</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="seat-selection-symbol bg-danger"></div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex flex-column justify-content-center h-100 ml-2">
+                                        <p><b>Selected Seats</b></p>
+                                        <p class="text-danger"><b>One: <span id="valOne"></span></b></p>
+                                        <p class="text-danger"><b>Two: <span id="valTwo"></span></b></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
