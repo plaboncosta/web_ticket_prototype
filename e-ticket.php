@@ -316,12 +316,18 @@ QRcode::png($text, $file, 'L', 10, 2);
             <td style="width: 30%; height: 150px; border: 1px solid #9E9E9E;">
                 <div>
                     <ul>
-                        <li style="font-size: 13px;">Collect Ticket Before 30 Minutes</li>
-                        <li style="font-size: 13px;">Seat Before 10 Minutes</li>
-                        <li style="font-size: 13px;">Avoid Rushing</li>
-                        <li style="font-size: 13px;">Book a meal from dashboard</li>
-                        <li style="font-size: 13px;">Raise any type of complaint from dashboard</li>
-                        <li style="font-size: 13px;">You can buy SMS pack from your dashboard</li>
+                        <li style="font-size: 11px;">If you purchased e-ticket for your own travel, print
+                            copy of email is sufficient to travel. You don’t need to print out any hard copy
+                            of ticket from
+                            station.
+                        </li>
+                        <li style="font-size: 11px;">
+                            If you purchase e-ticket for other persons, you have to print out hard copy of
+                            e-ticket from designated counters of any online stations.
+                        </li>
+                        <li style="font-size: 11px;">
+                            Please keep your Mobile Number/PIN combination in a safe place and DO NOT share the PIN information with anybody.
+                        </li>
                     </ul>
                 </div>
             </td>
@@ -329,11 +335,35 @@ QRcode::png($text, $file, 'L', 10, 2);
         </tbody>
     </table>
 
-    <div style="border-bottom: 1px solid #9E9E9E; padding-bottom: 5px; padding-top: 5px;">
-        <span style="font-size: 13px;">Advertisement starts from below: </span>
-    </div>
+    <table style="width: 100%;">
+        <tbody>
+        <tr>
+            <td style="width: 36.50%; padding-top: 20px;">
+                <p style="border-top: 1px dashed #9E9E9E;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </td>
+            <td style="width: 27%;">
+                <p style="font-size: 13px; margin: 0px; padding: 0px;">
+                    Advertisement below
+                    this line </p>
+            </td>
+            <td style="width: 36.50%; padding-top: 20px;">
+                <p style="border-top: 1px dashed #9E9E9E;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-    <div style="margin-top: 15px;">
+    <div style="margin-top: 0px;">
         <img style="width: 100%; height: 120px;" src="./assets/images/e-ticket-advertise.jpg" alt="">
     </div>
 </div>
